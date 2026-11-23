@@ -1,0 +1,25 @@
+<.mn_shell title="Mgl ID">
+  <article class="mn-doc">
+    <h1 class="mn-h1 mn-latin">Authorize application</h1>
+    <p class="mn-p mn-latin">
+      <strong>{(@client && @client.name) || @client_id}</strong> requests access to your account.
+    </p>
+    <ul class="mn-latin">
+      <%= for s <- @scopes do %>
+        <li>{s}</li>
+      <% end %>
+    </ul>
+    <form
+      action={~p"/oauth/consent"}
+      method="post"
+      class="mn-stack mn-latin"
+      style="gap: 0.75rem;"
+    >
+      <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
+      <input type="hidden" name="client_id" value={@client_id} />
+      <input type="hidden" name="scope" value={@scope} />
+      <button type="submit" name="decision" value="allow" class="btn btn-primary">Allow</button>
+      <button type="submit" name="decision" value="deny" class="btn btn-ghost">Deny</button>
+    </form>
+  </article>
+</.mn_shell>

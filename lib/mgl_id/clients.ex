@@ -1,0 +1,148 @@
+defmodule MglId.Clients do
+  @moduledoc """
+  OAuth/OIDC client administration (Boruta-backed).
+  """
+
+  alias Boruta.Ecto.Admin
+
+  def list_clients, do: Admin.list_clients()
+
+  def get_client!(id), do: Admin.get_client!(id)
+
+  def create_client(attrs) when is_map(attrs) do
+    Admin.create_client(attrs)
+  end
+
+  def ensure_default_scopes! do
+    for {name, public?} <- [
+          {"openid", true},
+          {"profile", true},
+          {"email", true},
+          {"offline_access", false}
+        ] do
+      case Admin.list_scopes() |> Enum.find(&(&1.name == name)) do
+        nil ->
+          {:ok, _} = Admin.create_scope(%{name: name, public: public?})
+
+        _ ->
+          :ok
+      end
+    end
+
+    :ok
+  end
+
+  @doc """
+  Create a confidential web client for local/dev integration testing.
+  """
+  def seed_dev_client! do
+    ensure_default_scopes!()
+
+    existing =
+      list_clients()
+      |> Enum.find(&(&1.name == "Mgl ID Dev Client"))
+
+    if existing do
+      existing
+    else
+      scopes = Admin.get_scopes_by_names(["openid", "profile", "email", "offline_access"])
+
+      {:ok, client} =
+        create_client(%{
+          name: "Mgl ID Dev Client",
+          redirect_uris: ["http://127.0.0.1:4001/callback", "http://localhost:4001/callback"],
+          supported_grant_types: ["authorization_code", "refresh_token"],
+          access_token_ttl: 600,
+          authorization_code_ttl: 60,
+          refresh_token_ttl: 60 * 60 * 24 * 30,
+          id_token_ttl: 600,
+          id_token_signature_alg: "RS256",
+          pkce: true,
+          confidential: true,
+          authorize_scope: true,
+          authorized_scopes: Enum.map(scopes, &%{id: &1.id}),
+          token_endpoint_auth_methods: ["client_secret_basic", "client_secret_post"]
+        })
+
+      client
+    end
+  end
+
+  @doc """
+  Seed confidential OIDC clients for Xamt and Nomio (idempotent by name).
+  """
+  def seed_product_clients! do
+    ensure_default_scopes!()
+
+    for {name, provider, redirect_uris} <- product_client_defs() do
+      seed_named_client!(name, provider, redirect_uris)
+    end
+  end
+
+  def seed_named_client!(name, provider, redirect_uris)
+      when is_binary(name) and is_binary(provider) and is_list(redirect_uris) do
+    ensure_default_scopes!()
+
+    existing = list_clients() |> Enum.find(&(&1.name == name))
+
+    if existing do
+      maybe_set_provider_metadata!(existing, provider)
+    else
+      scopes = Admin.get_scopes_by_names(["openid", "profile", "email", "offline_access"])
+
+      {:ok, client} =
+        create_client(%{
+          name: name,
+          redirect_uris: redirect_uris,
+          supported_grant_types: ["authorization_code", "refresh_token"],
+          access_token_ttl: 600,
+          authorization_code_ttl: 60,
+          refresh_token_ttl: 60 * 60 * 24 * 30,
+          id_token_ttl: 600,
+          id_token_signature_alg: "RS256",
+          pkce: true,
+          confidential: true,
+          authorize_scope: true,
+          authorized_scopes: Enum.map(scopes, &%{id: &1.id}),
+          token_endpoint_auth_methods: ["client_secret_basic", "client_secret_post"],
+          metadata: %{"provider" => provider}
+        })
+
+      client
+    end
+  end
+
+  defp product_client_defs do
+    xamt_uris =
+      System.get_env(
+        "XAMT_REDIRECT_URIS",
+        "http://127.0.0.1:4002/oauth/callback,http://localhost:4002/oauth/callback"
+      )
+      |> String.split(",", trim: true)
+
+    nomio_uris =
+      System.get_env(
+        "NOMIO_REDIRECT_URIS",
+        "http://127.0.0.1:4003/oauth/callback,http://localhost:4003/oauth/callback"
+      )
+      |> String.split(",", trim: true)
+
+    [
+      {"Xamt", "xamt", xamt_uris},
+      {"Nomio", "nomio", nomio_uris}
+    ]
+  end
+
+  defp maybe_set_provider_metadata!(client, provider) do
+    meta = client.metadata || %{}
+
+    if Map.get(meta, "provider") == provider do
+      client
+    else
+      case Admin.update_client(client, %{metadata: Map.put(meta, "provider", provider)}) do
+        {:ok, updated} -> updated
+        {:error, _} -> client
+      end
+    end
+  end
+end
