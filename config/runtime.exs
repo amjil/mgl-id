@@ -44,10 +44,10 @@ config :mgl_id,
 config :boruta, Boruta.Oauth, issuer: oidc_issuer
 
 # Account link redirect targets (product apps). Override in prod.
-# Note: Xamt's current OIDC link entry is /settings/account/identities/mgl/connect;
-# mgl-id's token-based account-link flow still expects a product /account/link receiver.
-xamt_link = System.get_env("XAMT_LINK_START_URL", "http://127.0.0.1:4002/account/link")
-nomio_link = System.get_env("NOMIO_LINK_START_URL", "http://127.0.0.1:4003/account/link")
+# Xamt receives initiations at GET /account/link?token=&provider=xamt
+# (OIDC link entry remains /settings/account/identities/mgl/connect).
+xamt_link = System.get_env("XAMT_LINK_START_URL", "http://localhost:4002/account/link")
+nomio_link = System.get_env("NOMIO_LINK_START_URL", "http://localhost:4003/account/link")
 
 config :mgl_id,
   account_link_providers: %{

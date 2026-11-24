@@ -122,10 +122,10 @@ defmodule MglId.Clients do
         "XAMT_REDIRECT_URIS",
         Enum.join(
           [
-            "http://127.0.0.1:4002/auth/mgl/callback",
             "http://localhost:4002/auth/mgl/callback",
-            "http://127.0.0.1:4002/settings/account/identities/mgl/callback",
-            "http://localhost:4002/settings/account/identities/mgl/callback"
+            "http://127.0.0.1:4002/auth/mgl/callback",
+            "http://localhost:4002/settings/account/identities/mgl/callback",
+            "http://127.0.0.1:4002/settings/account/identities/mgl/callback"
           ],
           ","
         )
@@ -135,7 +135,7 @@ defmodule MglId.Clients do
     nomio_uris =
       System.get_env(
         "NOMIO_REDIRECT_URIS",
-        "http://127.0.0.1:4003/oauth/callback,http://localhost:4003/oauth/callback"
+        "http://localhost:4003/oauth/callback,http://127.0.0.1:4003/oauth/callback"
       )
       |> String.split(",", trim: true)
 

@@ -16,12 +16,12 @@ config :mgl_id,
   account_link_providers: %{
     "xamt" => %{
       name: "Xamt",
-      link_start_url: "http://127.0.0.1:4002/account/link",
+      link_start_url: "http://localhost:4002/account/link",
       oauth_client_name: "Xamt"
     },
     "nomio" => %{
       name: "Nomio",
-      link_start_url: "http://127.0.0.1:4003/account/link",
+      link_start_url: "http://localhost:4003/account/link",
       oauth_client_name: "Nomio"
     }
   }
