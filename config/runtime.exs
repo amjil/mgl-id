@@ -20,17 +20,32 @@ if System.get_env("PHX_SERVER") do
   config :mgl_id, MglIdWeb.Endpoint, server: true
 end
 
-config :mgl_id, MglIdWeb.Endpoint, http: [port: String.to_integer(System.get_env("PORT", "4000"))]
+default_port = if config_env() == :dev, do: "4004", else: "4000"
+config :mgl_id, MglIdWeb.Endpoint, http: [port: String.to_integer(System.get_env("PORT", default_port))]
 
 # Registration / identity policy (defaults match SPEC §6.2)
+# Dev issuer must match the local listen URL so Discovery / id_token `iss` work with RPs.
+default_issuer =
+  case config_env() do
+    :dev -> "http://localhost:4004"
+    _ -> "https://id.amjil.net"
+  end
+
+oidc_issuer = System.get_env("OIDC_ISSUER", default_issuer)
+
 config :mgl_id,
   registration_enabled: System.get_env("REGISTRATION_ENABLED", "true") in ~w(true 1),
   registration_review_mode: System.get_env("REGISTRATION_REVIEW_MODE", "conditional"),
   registration_require_email: System.get_env("REGISTRATION_REQUIRE_EMAIL", "false") in ~w(true 1),
   registration_captcha_mode: System.get_env("REGISTRATION_CAPTCHA_MODE", "conditional"),
-  oidc_issuer: System.get_env("OIDC_ISSUER", "https://id.amjil.net")
+  oidc_issuer: oidc_issuer
+
+# Keep Discovery / id_token `iss` aligned with OIDC_ISSUER (Xamt validates both).
+config :boruta, Boruta.Oauth, issuer: oidc_issuer
 
 # Account link redirect targets (product apps). Override in prod.
+# Note: Xamt's current OIDC link entry is /settings/account/identities/mgl/connect;
+# mgl-id's token-based account-link flow still expects a product /account/link receiver.
 xamt_link = System.get_env("XAMT_LINK_START_URL", "http://127.0.0.1:4002/account/link")
 nomio_link = System.get_env("NOMIO_LINK_START_URL", "http://127.0.0.1:4003/account/link")
 

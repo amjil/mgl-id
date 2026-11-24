@@ -4,7 +4,7 @@
 # Usage: BASE_URL=https://id.amjil.net ./priv/scripts/load_test.sh
 set -euo pipefail
 
-BASE_URL="${BASE_URL:-http://127.0.0.1:4000}"
+BASE_URL="${BASE_URL:-http://localhost:4004}"
 N="${N:-200}"
 C="${C:-20}"
 

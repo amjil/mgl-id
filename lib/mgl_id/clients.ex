@@ -86,7 +86,9 @@ defmodule MglId.Clients do
     existing = list_clients() |> Enum.find(&(&1.name == name))
 
     if existing do
-      maybe_set_provider_metadata!(existing, provider)
+      existing
+      |> maybe_set_provider_metadata!(provider)
+      |> maybe_sync_redirect_uris!(redirect_uris)
     else
       scopes = Admin.get_scopes_by_names(["openid", "profile", "email", "offline_access"])
 
@@ -113,10 +115,20 @@ defmodule MglId.Clients do
   end
 
   defp product_client_defs do
+    # Must match Xamt.MglId redirect_uri / link_redirect_uri defaults:
+    # /auth/mgl/callback and /settings/account/identities/mgl/callback
     xamt_uris =
       System.get_env(
         "XAMT_REDIRECT_URIS",
-        "http://127.0.0.1:4002/oauth/callback,http://localhost:4002/oauth/callback"
+        Enum.join(
+          [
+            "http://127.0.0.1:4002/auth/mgl/callback",
+            "http://localhost:4002/auth/mgl/callback",
+            "http://127.0.0.1:4002/settings/account/identities/mgl/callback",
+            "http://localhost:4002/settings/account/identities/mgl/callback"
+          ],
+          ","
+        )
       )
       |> String.split(",", trim: true)
 
@@ -140,6 +152,20 @@ defmodule MglId.Clients do
       client
     else
       case Admin.update_client(client, %{metadata: Map.put(meta, "provider", provider)}) do
+        {:ok, updated} -> updated
+        {:error, _} -> client
+      end
+    end
+  end
+
+  defp maybe_sync_redirect_uris!(client, redirect_uris) do
+    current = Enum.sort(client.redirect_uris || [])
+    desired = Enum.sort(redirect_uris)
+
+    if current == desired do
+      client
+    else
+      case Admin.update_client(client, %{redirect_uris: redirect_uris}) do
         {:ok, updated} -> updated
         {:error, _} -> client
       end
