@@ -1,25 +1,30 @@
 <.mn_shell title="Mgl ID">
   <article class="mn-doc">
-    <h1 class="mn-h1 mn-latin">Authorize application</h1>
-    <p class="mn-p mn-latin">
-      <strong>{(@client && @client.name) || @client_id}</strong> requests access to your account.
+    <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ</h1>
+    <p class="mn-p mn-text">
+      <strong class="mn-upright">{(@client && @client.name) || @client_id}</strong>
+      ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠳᠦ ᠬᠦᠷᠲᠡᠯ ᠭᠡᠵᠦ ᠭᠤᠶᠤᠵᠤ ᠪᠠᠢᠨ᠎ᠠ᠃
     </p>
-    <ul class="mn-latin">
+    <ul class="mn-text">
       <%= for s <- @scopes do %>
-        <li>{s}</li>
+        <li>{scope_label(s)}</li>
       <% end %>
     </ul>
     <form
       action={~p"/oauth/consent"}
       method="post"
-      class="mn-stack mn-latin"
+      class="mn-stack"
       style="gap: 0.75rem;"
     >
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
       <input type="hidden" name="client_id" value={@client_id} />
       <input type="hidden" name="scope" value={@scope} />
-      <button type="submit" name="decision" value="allow" class="btn btn-primary">Allow</button>
-      <button type="submit" name="decision" value="deny" class="btn btn-ghost">Deny</button>
+      <button type="submit" name="decision" value="allow" class="mn-text btn btn-primary">
+        ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ
+      </button>
+      <button type="submit" name="decision" value="deny" class="mn-text btn btn-ghost">
+        ᠲᠠᠲᠠᠭᠠᠯᠵᠠᠬᠤ
+      </button>
     </form>
   </article>
 </.mn_shell>

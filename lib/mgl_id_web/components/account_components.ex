@@ -18,55 +18,55 @@ defmodule MglIdWeb.AccountComponents do
     <.mn_shell title="Mgl ID">
       <:rail>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "home", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"}
           href={~p"/account"}
         >
-          Home
+          ᠭᠡᠷ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "profile", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "profile", do: "font-bold"}"}
           href={~p"/account/profile"}
         >
-          Profile
+          ᠮᠡᠳᠡᠭᠡᠯᠡᠯ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "security", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "security", do: "font-bold"}"}
           href={~p"/account/security"}
         >
-          Security
+          ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "sessions", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "sessions", do: "font-bold"}"}
           href={~p"/account/sessions"}
         >
-          Sessions
+          ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "applications", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "applications", do: "font-bold"}"}
           href={~p"/account/applications"}
         >
-          Apps
+          ᠬᠡᠷᠡᠭᠯᠡᠭᠡ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "links", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "links", do: "font-bold"}"}
           href={~p"/account/links"}
         >
-          Links
+          ᠬᠣᠯᠪᠤᠭ᠎ᠠ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "privacy", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "privacy", do: "font-bold"}"}
           href={~p"/account/privacy"}
         >
-          Privacy
+          ᠨᠢᠭᠤᠴᠠᠯᠠᠯ
         </a>
 
         <%= if @current_user.is_admin do %>
-          <a class="mn-rail-link mn-latin" href={~p"/admin"}>Admin</a>
+          <a class="mn-rail-link mn-upright" href={~p"/admin"}>Admin</a>
         <% end %>
         <form action={~p"/logout"} method="post" class="inline">
           <input type="hidden" name="_method" value="delete" />
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
-          <button type="submit" class="mn-rail-link mn-latin">Logout</button>
+          <button type="submit" class="mn-rail-link mn-text">ᠭᠠᠷᠬᠤ</button>
         </form>
       </:rail>
       {render_slot(@inner_block)}

@@ -27,7 +27,7 @@ config :mgl_id, MglIdWeb.Endpoint, http: [port: String.to_integer(System.get_env
 # Dev issuer must match the local listen URL so Discovery / id_token `iss` work with RPs.
 default_issuer =
   case config_env() do
-    :dev -> "http://localhost:4004"
+    :dev -> "http://100.64.0.8:4004"
     _ -> "https://id.amjil.net"
   end
 
@@ -46,8 +46,8 @@ config :boruta, Boruta.Oauth, issuer: oidc_issuer
 # Account link redirect targets (product apps). Override in prod.
 # Xamt receives initiations at GET /account/link?token=&provider=xamt
 # (OIDC link entry remains /settings/account/identities/mgl/connect).
-xamt_link = System.get_env("XAMT_LINK_START_URL", "http://localhost:4002/account/link")
-nomio_link = System.get_env("NOMIO_LINK_START_URL", "http://localhost:4003/account/link")
+xamt_link = System.get_env("XAMT_LINK_START_URL", "http://100.64.0.8:4002/account/link")
+nomio_link = System.get_env("NOMIO_LINK_START_URL", "http://100.64.0.8:4003/account/link")
 
 config :mgl_id,
   account_link_providers: %{

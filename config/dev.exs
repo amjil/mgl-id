@@ -16,15 +16,14 @@ config :mgl_id, MglId.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :mgl_id, oidc_issuer: "http://localhost:4004"
+config :mgl_id, oidc_issuer: "http://100.64.0.8:4004"
 
-config :boruta, Boruta.Oauth, issuer: "http://localhost:4004"
+config :boruta, Boruta.Oauth, issuer: "http://100.64.0.8:4004"
 
 config :mgl_id, MglIdWeb.Endpoint,
-  # Binding to loopback ipv4 address prevents access from other machines.
-  # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  url: [host: "localhost", port: 4004],
-  http: [ip: {127, 0, 0, 1}, port: 4004],
+  # Bind all interfaces so browsers can reach the OIDC issuer via LAN/Tailscale.
+  url: [host: "100.64.0.8", port: 4004],
+  http: [ip: {0, 0, 0, 0}, port: 4004],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,

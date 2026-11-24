@@ -7,7 +7,7 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "Forgot password", sent: false)}
+    {:ok, assign(socket, page_title: "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ", sent: false)}
   end
 
   @impl true
@@ -22,18 +22,21 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
     ~H"""
     <.mn_shell title="Mgl ID">
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Forgot password</h1>
+        <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?</h1>
         <%= if @sent do %>
-          <p class="mn-p mn-latin">If the account exists, a reset email was sent.</p>
+          <p class="mn-p mn-text">
+            ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠪᠤᠯ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ ᠢᠮᠡᠯ ᠢᠯᠡᠭᠡᠪᠡ᠃
+          </p>
         <% else %>
           <form phx-submit="submit" class="mn-stack" style="gap: 1rem;">
-            <label class="mn-latin">
-              Username <input class="mn-input mn-input-latin" type="text" name="username" required />
+            <label class="mn-field">
+              <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
+              <input class="mn-input mn-input-latin" type="text" name="username" required />
             </label>
-            <button type="submit" class="mn-latin btn btn-primary">Send reset</button>
+            <button type="submit" class="mn-text btn btn-primary">ᠢᠯᠡᠭᠡᠬᠦ</button>
           </form>
         <% end %>
-        <p class="mn-p mn-latin"><a href={~p"/login"}>Back to login</a></p>
+        <p class="mn-p mn-text"><a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠷᠤᠤ ᠪᠤᠴᠠᠬᠤ</a></p>
       </article>
     </.mn_shell>
     """

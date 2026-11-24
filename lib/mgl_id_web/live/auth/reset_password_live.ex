@@ -9,7 +9,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       page_title: "Reset password",
+       page_title: "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ",
        token: params["token"],
        done: false,
        error: nil
@@ -23,7 +23,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
         {:noreply, assign(socket, done: true, error: nil)}
 
       {:error, _} ->
-        {:noreply, assign(socket, error: "Invalid or expired token / weak password")}
+        {:noreply, assign(socket, error: "ᠰᠢᠯᠲᠠᠭᠠᠰᠤᠨ ᠪᠤᠷᠤᠤ ᠪᠤᠶᠤ ᠬᠦᠴᠦᠨ ᠡᠮᠦ ᠪᠠᠢᠨ᠎ᠠ")}
     end
   end
 
@@ -32,14 +32,16 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
     ~H"""
     <.mn_shell title="Mgl ID">
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Reset password</h1>
+        <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ</h1>
         <%= if @done do %>
-          <p class="mn-p mn-latin">Password updated. <a href={~p"/login"}>Sign in</a></p>
+          <p class="mn-p mn-text">
+            ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠭᠳᠡᠪᠡ᠃ <a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>
+          </p>
         <% else %>
           <form phx-submit="submit" class="mn-stack" style="gap: 1rem;">
             <input type="hidden" name="token" value={@token} />
-            <label class="mn-latin">
-              New password
+            <label class="mn-field">
+              <span class="mn-text">ᠰᠢᠨ᠎ᠡ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
               <input
                 class="mn-input mn-input-latin"
                 type="password"
@@ -50,9 +52,9 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
               />
             </label>
             <%= if @error do %>
-              <p class="mn-p mn-latin text-error">{@error}</p>
+              <p class="mn-p mn-text text-error">{@error}</p>
             <% end %>
-            <button type="submit" class="mn-latin btn btn-primary">Update password</button>
+            <button type="submit" class="mn-text btn btn-primary">ᠬᠠᠳᠠᠭᠠᠯᠠᠬᠤ</button>
           </form>
         <% end %>
       </article>

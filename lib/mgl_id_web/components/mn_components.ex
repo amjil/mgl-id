@@ -12,7 +12,7 @@ defmodule MglIdWeb.MnComponents do
     ~H"""
     <div class="mn-shell min-h-screen">
       <aside class="mn-rail">
-        <a class="mn-rail-link mn-latin" href="/">{@title}</a>
+        <a class="mn-rail-link mn-text" href="/">{@title}</a>
         {render_slot(@rail)}
       </aside>
       <main class="mn-surface" data-mn-drag phx-hook="MongolianScroll" id="mn-surface">

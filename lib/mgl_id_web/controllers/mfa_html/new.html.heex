@@ -1,8 +1,8 @@
 <.mn_shell title="Mgl ID">
   <article class="mn-doc">
-    <h1 class="mn-h1 mn-latin">Multi-factor authentication</h1>
-    <p class="mn-p mn-latin">Enter the code from your authenticator app.</p>
-    <form action={~p"/mfa"} method="post" class="mn-stack mn-latin" style="gap: 1rem;">
+    <h1 class="mn-h1 mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ</h1>
+    <p class="mn-p mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
+    <form action={~p"/mfa"} method="post" class="mn-stack" style="gap: 1rem;">
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
       <input
         class="mn-input mn-input-latin"
@@ -11,7 +11,7 @@
         required
         autocomplete="one-time-code"
       />
-      <button type="submit" class="btn btn-primary">Verify</button>
+      <button type="submit" class="mn-text btn btn-primary">ᠰᠢᠯᠭᠠᠬᠤ</button>
     </form>
   </article>
 </.mn_shell>

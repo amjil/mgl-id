@@ -53,4 +53,11 @@ defmodule MglIdWeb.Oauth.ConsentHTML do
   import MglIdWeb.MnComponents
 
   embed_templates "consent_html/*"
+
+  def scope_label("openid"), do: "ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠪᠠᠲᠤᠮᠵᠢ"
+  def scope_label("profile"), do: "ᠨᠡᠢᠲᠡ ᠮᠡᠳᠡᠭᠡᠯᠡᠯ ᠢ ᠦᠵᠡᠬᠦ"
+  def scope_label("email"), do: "ᠢᠮᠡᠯ ᠬᠠᠶᠢᠭ ᠢ ᠦᠵᠡᠬᠦ"
+  def scope_label("offline_access"), do: "ᠳᠠᠬᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠡᠷᠬᠡ"
+  def scope_label(scope) when is_binary(scope), do: scope
+  def scope_label(_), do: ""
 end

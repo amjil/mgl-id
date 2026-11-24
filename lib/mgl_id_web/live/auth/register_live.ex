@@ -5,7 +5,7 @@ defmodule MglIdWeb.Auth.RegisterLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "Register")}
+    {:ok, assign(socket, page_title: "ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ")}
   end
 
   @impl true
@@ -14,12 +14,12 @@ defmodule MglIdWeb.Auth.RegisterLive do
     <.mn_shell title="Mgl ID">
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</h1>
-        <p class="mn-p mn-latin">Create your Mgl ID</p>
+        <p class="mn-p mn-text">ᠮᠢᠨᠤ Mgl ID ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ</p>
 
         <form action={~p"/register"} method="post" class="mn-stack" style="gap: 1rem;">
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
-          <label class="mn-latin">
-            Username
+          <label class="mn-field">
+            <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="text"
@@ -28,16 +28,16 @@ defmodule MglIdWeb.Auth.RegisterLive do
               autocomplete="username"
             />
           </label>
-          <label class="mn-latin">
-            Display name
+          <label class="mn-field">
+            <span class="mn-text">ᠨᠡᠷ᠎ᠡ</span>
             <input class="mn-input" type="text" name="display_name" autocomplete="nickname" />
           </label>
-          <label class="mn-latin">
-            Email (optional)
+          <label class="mn-field">
+            <span class="mn-text">ᠢᠮᠡᠯ <span class="mn-upright">(optional)</span></span>
             <input class="mn-input mn-input-latin" type="email" name="email" autocomplete="email" />
           </label>
-          <label class="mn-latin">
-            Password (min 12)
+          <label class="mn-field">
+            <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ <span class="mn-upright">(≥12)</span></span>
             <input
               class="mn-input mn-input-latin"
               type="password"
@@ -47,10 +47,12 @@ defmodule MglIdWeb.Auth.RegisterLive do
               autocomplete="new-password"
             />
           </label>
-          <button type="submit" class="mn-latin btn btn-primary">Register</button>
+          <button type="submit" class="mn-text btn btn-primary">ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</button>
         </form>
 
-        <p class="mn-p mn-latin"><a href={~p"/login"}>Already have an account?</a></p>
+        <p class="mn-p mn-text">
+          <a href={~p"/login"}>ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠤᠤ? ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>
+        </p>
       </article>
     </.mn_shell>
     """
