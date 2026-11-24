@@ -105,10 +105,194 @@
 /* Traditional Mongolian shell / surface / rail (vendored via mix mgl_id.vendor) */
 @import "../vendor/mgl-common-ui/mgl-common-ui.css";
 
-/* Form layout inside .mn-surface: flow fields left → right */
+:root {
+  --mn-card-bg: #fdfaf3;
+  --mn-input-bg: #fffefb;
+  --mn-label-extent: clamp(5.5rem, calc(var(--mn-vh) * 0.19), 9rem);
+  --mn-shadow-card: 0 18px 44px rgba(56, 44, 22, 0.08), 0 2px 8px rgba(56, 44, 22, 0.04);
+  --mn-shadow-sm: 0 2px 8px rgba(56, 44, 22, 0.05);
+}
+
+/* Disable browser faux-bold so Traditional Mongolian strokes stay sharp */
+.mn-shell {
+  font-synthesis-weight: none;
+  background:
+    radial-gradient(circle at 52% 45%, rgba(255, 253, 247, 0.72) 0%, rgba(244, 239, 228, 0) 68%),
+    var(--mn-bg);
+}
+
+/* ---------- Sidebar Rail ---------------------------------------------- */
+
+.mn-rail {
+  background: rgba(253, 250, 243, 0.82);
+  border-right: 1px solid var(--mn-line);
+  padding: 1.25rem 0.5rem;
+  gap: 0.6rem;
+}
+
+.mn-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--mn-text);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--mn-line);
+  width: 100%;
+}
+
+.mn-brand-seal {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.65rem;
+  background: var(--mn-accent);
+  color: #f7faf8;
+  font-family: var(--mn-font-script);
+  font-size: 21px;
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  box-shadow: 0 4px 12px rgba(47, 125, 95, 0.24);
+}
+
+.mn-brand-name {
+  font-family: var(--mn-font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--mn-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.mn-rail-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  flex: 1;
+  width: 100%;
+  padding-top: 0.35rem;
+}
+
+.mn-rail-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  padding: 0.7rem 0.5rem;
+  color: var(--mn-muted);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.mn-rail-link:hover {
+  background: rgba(120, 95, 50, 0.08);
+  color: var(--mn-text);
+}
+
+/* Highlight active navigation item with jade pill instead of faux-bold */
+.mn-rail-link.font-bold {
+  font-weight: 400;
+  color: var(--mn-accent);
+  background: rgba(47, 125, 95, 0.12);
+  box-shadow: inset 2.5px 0 0 var(--mn-accent);
+}
+
+.mn-rail-logout {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--mn-line);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Reading Surface & Standalone Auth Card -------------------- */
+
+.mn-surface-inner {
+  padding-inline: 2rem;
+  padding-block: 2rem 3rem;
+}
+
+.mn-doc {
+  gap: 1.6rem;
+}
+
+/* Center standalone pages (Home, Login, Register, MFA, Consent) as a refined card */
+.mn-shell--standalone .mn-doc {
+  margin: auto;
+  background: var(--mn-card-bg);
+  border: 1px solid var(--mn-line);
+  border-block-start: 3.5px solid var(--mn-accent); /* Physical left accent bar */
+  border-radius: 1rem;
+  padding-inline: 2.25rem;
+  padding-block: 2.25rem 2.5rem;
+  box-shadow: var(--mn-shadow-card);
+  gap: 1.75rem;
+  min-inline-size: min(26rem, calc(var(--mn-vh) - 4rem));
+  max-inline-size: calc(var(--mn-vh) - 3rem);
+}
+
+/* ---------- Typography & Links ---------------------------------------- */
+
+.mn-h1 {
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--mn-text);
+  letter-spacing: 0.04em;
+}
+
+.mn-h2 {
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--mn-accent-deep);
+}
+
+.mn-h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.mn-doc > .mn-h1 + .mn-p {
+  color: var(--mn-muted);
+  font-size: 15.5px;
+  padding-block-end: 1.25rem;
+  border-block-end: 1px solid var(--mn-line);
+}
+
+.mn-doc a:not(.btn):not(.mn-callout) {
+  color: var(--mn-accent);
+  text-decoration: none;
+  border-block-end: 1px solid rgba(47, 125, 95, 0.35);
+  padding-block-end: 0.1rem;
+  transition: border-color 140ms ease, color 140ms ease;
+}
+
+.mn-doc a:not(.btn):not(.mn-callout):hover {
+  color: #1f5c45;
+  border-block-end-color: currentColor;
+}
+
+/* Separate trailing link row on standalone auth cards */
+.mn-shell--standalone .mn-doc > .mn-p:last-child:has(a) {
+  border-block-start: 1px solid var(--mn-line);
+  padding-block-start: 1.4rem;
+  color: var(--mn-muted);
+  font-size: 15.5px;
+}
+
+/* ---------- Vertical Forms & Aligned Fields --------------------------- */
+
 .mn-form {
   display: flex;
-  flex-direction: column; /* left → right in vertical-lr */
+  flex-direction: column; /* left -> right in vertical-lr */
   align-items: flex-start;
   gap: 1.25rem;
 }
@@ -117,18 +301,61 @@
   display: flex;
   flex-direction: row; /* label on top, input below in vertical-lr */
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.65rem;
   flex-shrink: 0;
 }
 
-.mn-field > .mn-text {
+/* Uniform label track so every input starts on the exact same top baseline */
+.mn-form .mn-field > .mn-text {
+  min-inline-size: var(--mn-label-extent);
   white-space: nowrap;
   flex-shrink: 0;
+  color: var(--mn-muted);
+  font-size: 15.5px;
+  padding-block-start: 0.35rem;
 }
 
-.mn-field > .mn-input,
-.mn-field > .mn-textarea {
+/* Align checkbox fields with the input baseline */
+.mn-form .mn-field:has(input[type="checkbox"]) {
+  padding-inline-start: calc(var(--mn-label-extent) + 0.65rem);
+  align-items: center;
+}
+
+.mn-form .mn-field:has(input[type="checkbox"]) > .mn-text {
+  min-inline-size: auto;
+  padding-block-start: 0;
+  color: var(--mn-text);
+}
+
+.mn-input,
+.mn-textarea {
   flex-shrink: 0;
+  background: var(--mn-input-bg);
+  border: 1px solid rgba(120, 95, 50, 0.28);
+  border-radius: 0.65rem;
+  block-size: 2.75rem;
+  inline-size: clamp(10.5rem, calc(var(--mn-vh) - 20rem), 15rem);
+  padding: 0.65rem 0.55rem;
+  box-shadow: inset 0 1px 2px rgba(28, 34, 30, 0.04);
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.mn-textarea {
+  block-size: 7.5rem;
+  inline-size: clamp(12rem, calc(var(--mn-vh) - 18rem), 17rem);
+}
+
+.mn-input:hover,
+.mn-textarea:hover {
+  border-color: rgba(120, 95, 50, 0.48);
+}
+
+.mn-input:focus,
+.mn-textarea:focus {
+  outline: none;
+  border-color: var(--mn-accent);
+  box-shadow: 0 0 0 3px rgba(47, 125, 95, 0.16);
+  background: #ffffff;
 }
 
 .mn-input-latin {
@@ -136,34 +363,237 @@
   -webkit-writing-mode: vertical-lr;
   text-orientation: sideways;
   font-family: var(--mn-font-ui);
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.02em;
 }
 
+/* ---------- Buttons (override daisyUI fixed height cleanly) ----------- */
+
 .mn-shell .btn {
-  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 0;
+  width: auto;
+  min-width: 0;
+  inline-size: auto;
+  min-inline-size: 6.5rem;
+  block-size: 2.75rem;
+  padding-inline: 1.35rem;
+  padding-block: 0.5rem;
+  align-self: flex-start;
   writing-mode: vertical-lr;
   -webkit-writing-mode: vertical-lr;
   text-orientation: mixed;
   font-family: var(--mn-font-script);
-  border-radius: var(--mn-radius);
-  padding: 0.85rem 0.65rem;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  border-radius: 0.65rem;
   border: 1px solid var(--mn-line-strong);
-  background: var(--mn-surface);
+  background: var(--mn-input-bg);
   color: var(--mn-text);
+  box-shadow: var(--mn-shadow-sm);
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, transform 120ms ease;
+}
+
+.mn-shell .btn:hover {
+  border-color: var(--mn-accent);
+  background: #ffffff;
+}
+
+.mn-shell .btn:active {
+  transform: translateY(1px);
 }
 
 .mn-shell .btn-primary {
   background: var(--mn-accent);
   border-color: var(--mn-accent);
   color: #f7faf8;
+  box-shadow: 0 6px 16px rgba(47, 125, 95, 0.22);
+}
+
+.mn-shell .btn-primary:hover {
+  background: #266b51;
+  border-color: #266b51;
+  color: #ffffff;
 }
 
 .mn-shell .btn-ghost {
   background: transparent;
+  border-color: var(--mn-line);
+  box-shadow: none;
+  color: var(--mn-muted);
 }
 
-.mn-shell .btn:hover {
-  filter: brightness(0.96);
+.mn-shell .btn-ghost:hover {
+  background: rgba(120, 95, 50, 0.07);
+  color: var(--mn-text);
+}
+
+/* Align submit button with the top edge of inputs inside labeled forms */
+.mn-form:has(.mn-field) > .btn {
+  margin-inline-start: calc(var(--mn-label-extent) + 0.65rem);
+}
+
+/* ---------- Cards, Callouts & Flash Notices --------------------------- */
+
+.mn-callout {
+  display: flex;
+  flex-direction: column; /* flow columns left -> right inside cards */
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--mn-card-bg);
+  border: 1px solid var(--mn-line);
+  border-radius: 0.85rem;
+  padding-inline: 1.25rem;
+  padding-block: 1.15rem 1.25rem;
+  box-shadow: var(--mn-shadow-sm);
+  text-decoration: none;
+  color: var(--mn-text);
+}
+
+a.mn-callout:hover {
+  border-color: var(--mn-accent);
+  box-shadow: 0 6px 18px rgba(47, 125, 95, 0.1);
+}
+
+.mn-flash {
+  background: var(--mn-card-bg);
+  border: 1px solid var(--mn-line);
+  border-radius: 0.75rem;
+  padding-inline: 1rem;
+  padding-block: 0.85rem;
+  box-shadow: var(--mn-shadow-sm);
+}
+
+.mn-flash--info {
+  border-block-start: 3px solid var(--mn-accent);
+  background: #f3faf6;
+  color: #1f5c45;
+}
+
+.mn-flash--error {
+  border-block-start: 3px solid #c2413b;
+  background: #fdf3f2;
+  color: #9e2a25;
+}
+
+/* ---------- Safe areas & Mobile responsiveness ------------------------ */
+
+.mn-rail {
+  padding-top: calc(1.25rem + var(--mn-safe-top));
+  padding-bottom: calc(1.25rem + var(--mn-safe-bottom));
+  padding-left: calc(0.5rem + var(--mn-safe-left));
+}
+
+.mn-surface-inner {
+  padding-inline-start: calc(2rem + var(--mn-safe-top));
+  padding-inline-end: calc(2rem + var(--mn-safe-bottom));
+  padding-block-end: calc(3rem + var(--mn-safe-right));
+}
+
+@media (max-width: 640px) {
+  :root {
+    --mn-rail: 3.6rem;
+    --mn-label-extent: clamp(4.75rem, calc(var(--mn-vh) * 0.18), 7.5rem);
+  }
+
+  .mn-rail {
+    padding: calc(0.75rem + var(--mn-safe-top)) 0.3rem calc(0.75rem + var(--mn-safe-bottom)) calc(0.3rem + var(--mn-safe-left));
+  }
+
+  .mn-brand-seal {
+    width: 2rem;
+    height: 2rem;
+    font-size: 18px;
+  }
+
+  .mn-brand-name {
+    font-size: 10px;
+  }
+
+  .mn-surface-inner {
+    padding-inline-start: calc(1rem + var(--mn-safe-top));
+    padding-inline-end: calc(1.25rem + var(--mn-safe-bottom));
+    padding-block: 1rem calc(1.75rem + var(--mn-safe-right));
+  }
+
+  /* Turn standalone rail into a compact top bar on phones */
+  .mn-shell--standalone {
+    flex-direction: column;
+  }
+
+  .mn-shell--standalone .mn-rail {
+    flex: 0 0 auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: calc(0.55rem + var(--mn-safe-top)) 1rem 0.55rem calc(1rem + var(--mn-safe-left));
+    border-right: 0;
+    border-bottom: 1px solid var(--mn-line);
+    overflow: hidden;
+  }
+
+  .mn-shell--standalone .mn-brand {
+    flex-direction: row;
+    width: auto;
+    padding-bottom: 0;
+    border-bottom: 0;
+    gap: 0.6rem;
+  }
+
+  .mn-shell--standalone .mn-brand-name {
+    font-size: 13px;
+  }
+
+  .mn-shell--standalone .mn-surface-inner {
+    padding-inline-start: 1rem;
+    padding-inline-end: calc(1rem + var(--mn-safe-bottom));
+    padding-block: 1rem 1.5rem;
+  }
+
+  .mn-shell--standalone .mn-doc {
+    min-inline-size: min(21rem, 100%);
+    max-inline-size: 100%;
+    padding-inline: 1.25rem;
+    padding-block: 1.35rem 1.5rem;
+    gap: 1.15rem;
+    border-radius: 0.85rem;
+  }
+
+  .mn-h1 {
+    font-size: 23px;
+  }
+
+  .mn-form {
+    gap: 1rem;
+  }
+
+  /* Scale vertical input extent smoothly when mobile virtual keyboard opens */
+  .mn-input {
+    block-size: 2.6rem;
+    inline-size: clamp(6.5rem, calc(var(--mn-vh) - 15rem), 13.5rem);
+  }
+
+  .mn-textarea {
+    block-size: 6rem;
+    inline-size: clamp(7.5rem, calc(var(--mn-vh) - 14rem), 15rem);
+  }
+
+  .mn-shell .btn {
+    block-size: 2.6rem;
+    min-inline-size: 5.5rem;
+    padding-inline: 1.1rem;
+  }
+
+  .mn-callout {
+    padding-inline: 1rem;
+    padding-block: 0.9rem 1rem;
+  }
 }

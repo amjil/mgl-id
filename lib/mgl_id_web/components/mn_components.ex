@@ -11,18 +11,23 @@ defmodule MglIdWeb.MnComponents do
 
   def mn_shell(assigns) do
     ~H"""
-    <div class="mn-shell min-h-screen">
+    <div class={["mn-shell", @rail == [] && "mn-shell--standalone"]}>
       <aside class="mn-rail">
-        <a class="mn-rail-link mn-text" href="/">{@title}</a>
-        {render_slot(@rail)}
+        <a class="mn-brand" href="/" title={@title}>
+          <span class="mn-brand-seal" aria-hidden="true">ᠮ</span>
+          <span class="mn-brand-name">{@title}</span>
+        </a>
+        <nav :if={@rail != []} class="mn-rail-nav">
+          {render_slot(@rail)}
+        </nav>
       </aside>
       <main class="mn-surface" data-mn-drag phx-hook="MongolianScroll" id="mn-surface">
         <div class="mn-surface-inner mn-columns">
           <%!-- Render flash messages inline in vertical-lr flow --%>
-          <div :if={msg = Phoenix.Flash.get(@flash, :info)} class="mn-callout mn-text" role="status">
+          <div :if={msg = Phoenix.Flash.get(@flash, :info)} class="mn-flash mn-flash--info mn-text" role="status">
             {msg}
           </div>
-          <div :if={msg = Phoenix.Flash.get(@flash, :error)} class="mn-callout mn-text text-error" role="alert">
+          <div :if={msg = Phoenix.Flash.get(@flash, :error)} class="mn-flash mn-flash--error mn-text" role="alert">
             {msg}
           </div>
           {render_slot(@inner_block)}

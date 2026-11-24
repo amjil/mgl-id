@@ -64,7 +64,7 @@ defmodule MglIdWeb.AccountComponents do
         <%= if @current_user.is_admin do %>
           <a class="mn-rail-link mn-text" href={~p"/admin"}>ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</a>
         <% end %>
-        <form action={~p"/logout"} method="post" class="inline">
+        <form action={~p"/logout"} method="post" class="mn-rail-logout">
           <input type="hidden" name="_method" value="delete" />
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
           <button type="submit" class="mn-rail-link mn-text">ᠭᠠᠷᠬᠤ</button>
