@@ -16,7 +16,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
 
       {:ok,
        socket
-       |> assign(page_title: "Clients")
+       |> assign(page_title: "OAuth ᠬᠡᠷᠡᠭᠯᠡᠭᠡ")
        |> assign(clients: Clients.list_clients())
        |> assign(created: nil)
        |> assign(message: nil)}
@@ -52,10 +52,10 @@ defmodule MglIdWeb.Admin.ClientsLive do
            socket
            |> assign(clients: Clients.list_clients())
            |> assign(created: client)
-           |> assign(message: "Client created. Secret shown once.")}
+           |> assign(message: "ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠭᠦᠰᠭᠡᠪᠡ᠃ ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠭᠠᠭᠴᠠ ᠨᠢᠭᠡᠨ ᠦᠵᠡᠭᠦᠯᠦᠨ᠎ᠡ᠃")}
 
         {:error, _} ->
-          {:noreply, assign(socket, message: "Failed to create client")}
+          {:noreply, assign(socket, message: "ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠭᠦᠰᠬᠡᠵᠦ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ᠃")}
       end
     end
   end
@@ -68,7 +68,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
      socket
      |> assign(clients: Clients.list_clients())
      |> assign(created: client)
-     |> assign(message: "Secret rotated.")}
+     |> assign(message: "ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠰᠣᠯᠢᠭᠳᠠᠪᠠ᠃")}
   end
 
   @impl true
@@ -76,14 +76,15 @@ defmodule MglIdWeb.Admin.ClientsLive do
     ~H"""
     <.admin_shell active="clients" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">OAuth clients</h1>
+        <h1 class="mn-h1 mn-text"><span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
 
-        <form phx-submit="create" class="mn-stack mn-latin" style="gap: 0.75rem;">
-          <label>
-            Name <input class="mn-input mn-input-latin" name="name" required />
+        <form phx-submit="create" class="mn-stack" style="gap: 0.75rem;">
+          <label class="mn-field">
+            <span class="mn-text">ᠨᠡᠷ᠎ᠡ</span>
+            <input class="mn-input mn-input-latin" name="name" required />
           </label>
-          <label>
-            Redirect URIs (comma-separated)
+          <label class="mn-field">
+            <span class="mn-text">ᠪᠤᠴᠠᠬᠤ ᠬᠠᠶᠢᠭ <span class="mn-upright">(,)</span></span>
             <input
               class="mn-input mn-input-latin"
               name="redirect_uris"
@@ -91,26 +92,37 @@ defmodule MglIdWeb.Admin.ClientsLive do
               required
             />
           </label>
-          <label>
-            <input type="checkbox" name="confidential" value="true" checked /> Confidential
+          <label class="mn-field">
+            <input type="checkbox" name="confidential" value="true" checked />
+            <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</span>
           </label>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="mn-text btn btn-primary">ᠡᠭᠦᠰᠬᠡᠬᠦ</button>
         </form>
 
         <%= if @created do %>
-          <p class="mn-p mn-latin">client_id={@created.id}</p>
-          <p class="mn-p mn-latin">secret={@created.secret}</p>
+          <%!-- Keep credentials horizontal for easy copy/paste --%>
+          <div class="mn-callout mn-latin">
+            <p>client_id={@created.id}</p>
+            <p>secret={@created.secret}</p>
+          </div>
         <% end %>
         <%= if @message do %>
-          <p class="mn-p mn-latin">{@message}</p>
+          <p class="mn-p mn-text">{@message}</p>
         <% end %>
 
-        <div class="mn-stack mn-latin" style="gap: 1rem; margin-top: 1.5rem;">
+        <hr class="mn-hr" />
+
+        <div class="mn-columns" style="gap: 1rem;">
           <%= for c <- @clients do %>
-            <div>
-              <p>{c.name} — {c.id}</p>
-              <p>PKCE: {inspect(c.pkce)} confidential: {inspect(c.confidential)}</p>
-              <button phx-click="rotate" phx-value-id={c.id} class="btn btn-sm">Rotate secret</button>
+            <div class="mn-callout mn-stack">
+              <p class="mn-p mn-upright">{c.name} — {c.id}</p>
+              <p class="mn-p mn-text">
+                <span class="mn-upright">PKCE: {inspect(c.pkce)}</span> ·
+                <span class="mn-upright">confidential: {inspect(c.confidential)}</span>
+              </p>
+              <button phx-click="rotate" phx-value-id={c.id} class="mn-text btn">
+                ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠰᠣᠯᠢᠬᠤ
+              </button>
             </div>
           <% end %>
         </div>

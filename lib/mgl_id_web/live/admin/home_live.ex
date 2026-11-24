@@ -5,7 +5,7 @@ defmodule MglIdWeb.Admin.HomeLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "Admin")}
+    {:ok, assign(socket, page_title: "ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ")}
   end
 
   @impl true
@@ -13,8 +13,10 @@ defmodule MglIdWeb.Admin.HomeLive do
     ~H"""
     <.admin_shell active="home" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Admin</h1>
-        <p class="mn-p mn-latin">Manage users, registration reviews, and OAuth clients.</p>
+        <h1 class="mn-h1 mn-text">ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</h1>
+        <p class="mn-p mn-text">
+          ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠂ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠪᠠ <span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠶᠢ ᠤᠳᠢᠷᠳᠤᠬᠤ᠃
+        </p>
       </article>
     </.admin_shell>
     """

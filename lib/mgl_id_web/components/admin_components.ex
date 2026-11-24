@@ -15,36 +15,36 @@ defmodule MglIdWeb.AdminComponents do
 
   def admin_shell(assigns) do
     ~H"""
-    <.mn_shell title="Mgl ID Admin" flash={@flash}>
+    <.mn_shell title="Mgl ID ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ" flash={@flash}>
       <:rail>
-        <a class={"mn-rail-link mn-latin #{if @active == "home", do: "font-bold"}"} href={~p"/admin"}>
-          Dashboard
+        <a class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"} href={~p"/admin"}>
+          ᠬᠢᠨᠠᠯᠲᠠ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "users", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "users", do: "font-bold"}"}
           href={~p"/admin/users"}
         >
-          Users
+          ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "registrations", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "registrations", do: "font-bold"}"}
           href={~p"/admin/registrations"}
         >
-          Reviews
+          ᠰᠢᠯᠭᠠᠯᠲᠠ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "clients", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "clients", do: "font-bold"}"}
           href={~p"/admin/clients"}
         >
-          Clients
+          ᠬᠡᠷᠡᠭᠯᠡᠭᠡ
         </a>
         <a
-          class={"mn-rail-link mn-latin #{if @active == "migration", do: "font-bold"}"}
+          class={"mn-rail-link mn-text #{if @active == "migration", do: "font-bold"}"}
           href={~p"/admin/migration"}
         >
-          Migration
+          ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ
         </a>
-        <a class="mn-rail-link mn-latin" href={~p"/account"}>Account</a>
+        <a class="mn-rail-link mn-text" href={~p"/account"}>ᠪᠦᠷᠲᠦᠭᠡᠯ</a>
       </:rail>
       {render_slot(@inner_block)}
     </.mn_shell>

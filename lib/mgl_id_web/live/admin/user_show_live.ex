@@ -47,28 +47,48 @@ defmodule MglIdWeb.Admin.UserShowLive do
     ~H"""
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">{@user.username}</h1>
-        <p class="mn-p mn-latin">ID: {@user.id}</p>
-        <p class="mn-p mn-latin">Status: {@user.status}</p>
-        <p class="mn-p mn-latin">Review: {@user.review_status}</p>
-        <p class="mn-p mn-latin">Trust: {@user.trust_level}</p>
+        <h1 class="mn-h1 mn-upright">{@user.username}</h1>
+        <p class="mn-p mn-text">
+          <span class="mn-upright">ID</span>: <span class="mn-upright">{@user.id}</span>
+        </p>
+        <p class="mn-p mn-text">
+          ᠪᠠᠶᠢᠳᠠᠯ: <span class="mn-upright">{@user.status}</span>
+        </p>
+        <p class="mn-p mn-text">
+          ᠰᠢᠯᠭᠠᠯᠲᠠ: <span class="mn-upright">{@user.review_status}</span>
+        </p>
+        <p class="mn-p mn-text">
+          ᠢᠲᠡᠭᠡᠯ ᠦᠨ ᠲᠦᠪᠰᠢᠨ: <span class="mn-upright">{@user.trust_level}</span>
+        </p>
 
-        <div class="mn-stack mn-latin" style="gap: 0.5rem;">
-          <button phx-click="status" phx-value-status="active" class="btn btn-sm">Activate</button>
-          <button phx-click="status" phx-value-status="suspended" class="btn btn-sm">Suspend</button>
-          <button phx-click="status" phx-value-status="disabled" class="btn btn-sm">Disable</button>
+        <div class="mn-stack" style="gap: 0.5rem;">
+          <button phx-click="status" phx-value-status="active" class="mn-text btn btn-primary">
+            ᠢᠳᠡᠪᠬᠢᠵᠢᠭᠦᠯᠬᠦ
+          </button>
+          <button phx-click="status" phx-value-status="suspended" class="mn-text btn">
+            ᠲᠦᠷ ᠵᠣᠭᠰᠤᠭᠠᠬᠤ
+          </button>
+          <button phx-click="status" phx-value-status="disabled" class="mn-text btn btn-ghost">
+            ᠬᠠᠭᠠᠬᠤ
+          </button>
         </div>
 
-        <h2 class="mn-latin">Login attempts</h2>
+        <hr class="mn-hr" />
+
+        <h2 class="mn-h2 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
         <%= for a <- @attempts do %>
-          <p class="mn-p mn-latin">
-            {a.inserted_at} — {if a.success, do: "ok", else: "fail"} — {a.ip_address}
+          <p class="mn-p mn-text">
+            <span class="mn-upright">{a.inserted_at}</span> —
+            {if a.success, do: "ᠠᠮᠵᠢᠯᠲᠠᠲᠠᠢ", else: "ᠠᠮᠵᠢᠯᠲᠠᠭᠦᠢ"} —
+            <span class="mn-upright">{a.ip_address}</span>
           </p>
         <% end %>
 
-        <h2 class="mn-latin">Linked apps</h2>
+        <hr class="mn-hr" />
+
+        <h2 class="mn-h2 mn-text">ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h2>
         <%= for app <- @apps do %>
-          <p class="mn-p mn-latin">{(app.client && app.client.name) || app.client_id}</p>
+          <p class="mn-p mn-upright">{(app.client && app.client.name) || app.client_id}</p>
         <% end %>
       </article>
     </.admin_shell>

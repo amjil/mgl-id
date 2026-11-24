@@ -8,7 +8,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
   @impl true
   def mount(_params, _session, socket) do
     stats = AccountLinks.migration_stats()
-    {:ok, assign(socket, page_title: "Migration", stats: stats)}
+    {:ok, assign(socket, page_title: "ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ", stats: stats)}
   end
 
   @impl true
@@ -16,17 +16,22 @@ defmodule MglIdWeb.Admin.MigrationLive do
     ~H"""
     <.admin_shell active="migration" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Account migration</h1>
-        <p class="mn-p mn-latin">
-          Link-mode only. Old product logins stay available until products turn them off.
+        <h1 class="mn-h1 mn-text">ᠪᠦᠷᠲᠦᠭᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ</h1>
+        <p class="mn-p mn-text">
+          ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
         </p>
-        <div class="mn-stack mn-latin" style="gap: 0.75rem; margin-top: 1rem;">
-          <p>Linked total: {@stats.linked_total}</p>
-          <p>Pending initiations: {@stats.pending_initiations}</p>
+        <div class="mn-stack" style="gap: 0.75rem;">
+          <p class="mn-p mn-text">
+            ᠨᠡᠢᠲᠡ ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-upright">{@stats.linked_total}</span>
+          </p>
+          <p class="mn-p mn-text">
+            ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ: <span class="mn-upright">{@stats.pending_initiations}</span>
+          </p>
           <%= for provider <- @stats.providers do %>
-            <p>
-              {String.capitalize(provider)} linked: {Map.get(@stats.linked_by_provider, provider, 0)} ·
-              unlinked history: {Map.get(@stats.unlinked_by_provider, provider, 0)}
+            <p class="mn-p mn-text">
+              <span class="mn-upright">{String.capitalize(provider)}</span> —
+              ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-upright">{Map.get(@stats.linked_by_provider, provider, 0)}</span> ·
+              ᠰᠠᠯᠭᠠᠭᠰᠠᠨ: <span class="mn-upright">{Map.get(@stats.unlinked_by_provider, provider, 0)}</span>
             </p>
           <% end %>
         </div>

@@ -13,7 +13,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
     else
       {:ok,
        socket
-       |> assign(page_title: "Registration reviews")
+       |> assign(page_title: "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ")
        |> assign(reviews: Registrations.list_pending())}
     end
   end
@@ -36,22 +36,29 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
     ~H"""
     <.admin_shell active="registrations" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Pending registrations</h1>
+        <h1 class="mn-h1 mn-text">ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠪᠦᠷᠢᠳᠬᠡᠯ</h1>
         <%= if @reviews == [] do %>
-          <p class="mn-p mn-latin">No pending reviews.</p>
+          <p class="mn-p mn-text">ᠰᠢᠯᠭᠠᠬᠤ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠭᠡᠢ᠃</p>
         <% else %>
-          <div class="mn-stack" style="gap: 1.5rem;">
+          <div class="mn-columns" style="gap: 1.25rem;">
             <%= for review <- @reviews do %>
-              <div class="mn-latin">
-                <p>
-                  {review.user.username} — {inspect(review.risk_signals)}
+              <div class="mn-callout mn-stack">
+                <p class="mn-p mn-text">
+                  <span class="mn-upright">{review.user.username}</span> —
+                  <span class="mn-upright">{inspect(review.risk_signals)}</span>
                 </p>
-                <button phx-click="approve" phx-value-id={review.id} class="btn btn-primary btn-sm">
-                  Approve
-                </button>
-                <button phx-click="reject" phx-value-id={review.id} class="btn btn-ghost btn-sm">
-                  Reject
-                </button>
+                <div class="mn-stack" style="gap: 0.5rem;">
+                  <button
+                    phx-click="approve"
+                    phx-value-id={review.id}
+                    class="mn-text btn btn-primary"
+                  >
+                    ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ
+                  </button>
+                  <button phx-click="reject" phx-value-id={review.id} class="mn-text btn btn-ghost">
+                    ᠲᠠᠲᠠᠭᠠᠯᠵᠠᠬᠤ
+                  </button>
+                </div>
               </div>
             <% end %>
           </div>

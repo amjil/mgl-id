@@ -14,7 +14,7 @@ defmodule MglIdWeb.Admin.UsersLive do
     else
       {:ok,
        socket
-       |> assign(page_title: "Users")
+       |> assign(page_title: "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ")
        |> assign(q: "")
        |> assign(users: Accounts.list_users())}
     end
@@ -30,19 +30,24 @@ defmodule MglIdWeb.Admin.UsersLive do
     ~H"""
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Users</h1>
-        <form phx-change="search" class="mn-latin">
-          <input
-            class="mn-input mn-input-latin"
-            type="search"
-            name="q"
-            value={@q}
-            placeholder="Search"
-          />
+        <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ</h1>
+        <form phx-change="search" class="mn-stack">
+          <label class="mn-field">
+            <span class="mn-text">ᠬᠠᠢᠬᠤ</span>
+            <input
+              class="mn-input mn-input-latin"
+              type="search"
+              name="q"
+              value={@q}
+              placeholder="username"
+            />
+          </label>
         </form>
-        <div class="mn-stack mn-latin" style="gap: 0.75rem; margin-top: 1rem;">
+        <div class="mn-columns" style="gap: 0.75rem;">
           <%= for u <- @users do %>
-            <a href={~p"/admin/users/#{u.id}"}>{u.username} — {u.status}</a>
+            <a href={~p"/admin/users/#{u.id}"} class="mn-callout mn-text">
+              <span class="mn-upright">{u.username}</span> — <span class="mn-upright">{u.status}</span>
+            </a>
           <% end %>
         </div>
       </article>
