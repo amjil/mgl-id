@@ -11,7 +11,7 @@ defmodule MglIdWeb.Account.HomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="home">
+    <.account_shell current_user={@current_user} active="home" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠪᠦᠷᠲᠦᠭᠡᠯ</h1>
         <p class="mn-p mn-text">

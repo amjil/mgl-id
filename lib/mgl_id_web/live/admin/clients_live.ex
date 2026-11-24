@@ -74,7 +74,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="clients">
+    <.admin_shell active="clients" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">OAuth clients</h1>
 

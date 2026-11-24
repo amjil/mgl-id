@@ -6,5 +6,7 @@ defmodule MglIdWeb.PageHTML do
   """
   use MglIdWeb, :html
 
+  import MglIdWeb.MnComponents
+
   embed_templates "page_html/*"
 end

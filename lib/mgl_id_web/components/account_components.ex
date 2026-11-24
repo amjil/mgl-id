@@ -11,11 +11,12 @@ defmodule MglIdWeb.AccountComponents do
 
   attr :current_user, :map, required: true
   attr :active, :string, default: "home"
+  attr :flash, :map, default: %{}
   slot :inner_block, required: true
 
   def account_shell(assigns) do
     ~H"""
-    <.mn_shell title="Mgl ID">
+    <.mn_shell title="Mgl ID" flash={@flash}>
       <:rail>
         <a
           class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"}

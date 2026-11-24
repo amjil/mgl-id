@@ -45,7 +45,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="users">
+    <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">{@user.username}</h1>
         <p class="mn-p mn-latin">ID: {@user.id}</p>

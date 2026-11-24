@@ -14,7 +14,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="migration">
+    <.admin_shell active="migration" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">Account migration</h1>
         <p class="mn-p mn-latin">

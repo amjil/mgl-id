@@ -10,11 +10,12 @@ defmodule MglIdWeb.AdminComponents do
     statics: MglIdWeb.static_paths()
 
   attr :active, :string, default: "home"
+  attr :flash, :map, default: %{}
   slot :inner_block, required: true
 
   def admin_shell(assigns) do
     ~H"""
-    <.mn_shell title="Mgl ID Admin">
+    <.mn_shell title="Mgl ID Admin" flash={@flash}>
       <:rail>
         <a class={"mn-rail-link mn-latin #{if @active == "home", do: "font-bold"}"} href={~p"/admin"}>
           Dashboard

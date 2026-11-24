@@ -11,7 +11,7 @@ defmodule MglIdWeb.Admin.HomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="home">
+    <.admin_shell active="home" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">Admin</h1>
         <p class="mn-p mn-latin">Manage users, registration reviews, and OAuth clients.</p>

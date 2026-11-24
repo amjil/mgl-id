@@ -11,7 +11,7 @@ defmodule MglIdWeb.Account.SecurityLive do
 
     {:ok,
      socket
-     |> assign(page_title: "Security")
+     |> assign(page_title: "ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ")
      |> assign(mfa_enabled: Mfa.enabled?(user))
      |> assign(mfa_uri: nil)
      |> assign(password_message: nil)
@@ -26,10 +26,13 @@ defmodule MglIdWeb.Account.SecurityLive do
            params["new_password"]
          ) do
       :ok ->
-        {:noreply, assign(socket, password_message: "Password changed. Please sign in again.")}
+        {:noreply,
+         assign(socket,
+           password_message: "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠣᠯᠢᠭᠳᠠᠪᠠ᠃ ᠳᠠᠬᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠭᠡᠷᠡᠢ᠃"
+         )}
 
       {:error, _} ->
-        {:noreply, assign(socket, password_message: "Could not change password.")}
+        {:noreply, assign(socket, password_message: "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠣᠯᠢᠵᠤ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ᠃")}
     end
   end
 
@@ -40,7 +43,9 @@ defmodule MglIdWeb.Account.SecurityLive do
      socket
      |> assign(current_user: user)
      |> assign(mfa_uri: uri)
-     |> assign(mfa_message: "Scan the otpauth URI with an authenticator, then confirm.")}
+     |> assign(
+       mfa_message: "ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠪᠡᠷ ᠤᠩᠰᠢᠭᠤᠯᠵᠤ ᠺᠣᠳ ᠢ ᠪᠠᠲᠤᠯᠠᠭᠠᠷᠠᠢ᠃"
+     )}
   end
 
   def handle_event("mfa_confirm", %{"code" => code}, socket) do
@@ -51,10 +56,10 @@ defmodule MglIdWeb.Account.SecurityLive do
          |> assign(current_user: user)
          |> assign(mfa_enabled: true)
          |> assign(mfa_uri: nil)
-         |> assign(mfa_message: "MFA enabled.")}
+         |> assign(mfa_message: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠨᠡᠭᠡᠭᠡᠭᠳᠡᠪᠡ᠃")}
 
       {:error, _} ->
-        {:noreply, assign(socket, mfa_message: "Invalid code.")}
+        {:noreply, assign(socket, mfa_message: "ᠺᠣᠳ ᠪᠤᠷᠤᠤ ᠪᠠᠢᠨ᠎ᠠ᠃")}
     end
   end
 
@@ -65,24 +70,24 @@ defmodule MglIdWeb.Account.SecurityLive do
      socket
      |> assign(current_user: user)
      |> assign(mfa_enabled: false)
-     |> assign(mfa_message: "MFA disabled.")}
+     |> assign(mfa_message: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠬᠠᠭᠠᠭᠳᠠᠪᠠ᠃")}
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="security">
+    <.account_shell current_user={@current_user} active="security" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Security</h1>
+        <h1 class="mn-h1 mn-text">ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ</h1>
 
-        <h2 class="mn-latin">Change password</h2>
-        <form phx-submit="change_password" class="mn-stack mn-latin" style="gap: 1rem;">
-          <label>
-            Current password
+        <h2 class="mn-h2 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠣᠯᠢᠬᠤ</h2>
+        <form phx-submit="change_password" class="mn-stack" style="gap: 1rem;">
+          <label class="mn-field">
+            <span class="mn-text">ᠣᠳᠤ ᠶᠢᠨ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
             <input class="mn-input mn-input-latin" type="password" name="current_password" required />
           </label>
-          <label>
-            New password
+          <label class="mn-field">
+            <span class="mn-text">ᠰᠢᠨ᠎ᠡ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="password"
@@ -91,34 +96,40 @@ defmodule MglIdWeb.Account.SecurityLive do
               minlength="12"
             />
           </label>
-          <button type="submit" class="btn btn-primary">Update password</button>
+          <button type="submit" class="mn-text btn btn-primary">ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ</button>
         </form>
         <%= if @password_message do %>
-          <p class="mn-p mn-latin">{@password_message}</p>
+          <p class="mn-p mn-text">{@password_message}</p>
         <% end %>
 
-        <h2 class="mn-latin">Authenticator MFA</h2>
+        <hr class="mn-hr" />
+
+        <h2 class="mn-h2 mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ</h2>
         <%= if @mfa_enabled do %>
-          <p class="mn-p mn-latin">MFA is enabled.</p>
-          <button phx-click="mfa_disable" class="btn btn-ghost mn-latin">Disable MFA</button>
+          <p class="mn-p mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠨᠡᠭᠡᠭᠡᠯᠲᠡᠲᠡᠢ ᠪᠠᠢᠨ᠎ᠠ᠃</p>
+          <button phx-click="mfa_disable" class="mn-text btn btn-ghost">ᠬᠠᠭᠠᠬᠤ</button>
         <% else %>
-          <button phx-click="mfa_setup" class="btn btn-primary mn-latin">Set up MFA</button>
+          <button phx-click="mfa_setup" class="mn-text btn btn-primary">ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠬᠤ</button>
           <%= if @mfa_uri do %>
+            <%!-- Keep otpauth URI readable for copy/paste --%>
             <p class="mn-p mn-latin" style="word-break: break-all;">{@mfa_uri}</p>
-            <form phx-submit="mfa_confirm" class="mn-stack mn-latin" style="gap: 0.5rem;">
-              <input
-                class="mn-input mn-input-latin"
-                type="text"
-                name="code"
-                placeholder="123456"
-                required
-              />
-              <button type="submit" class="btn btn-primary">Confirm</button>
+            <form phx-submit="mfa_confirm" class="mn-stack" style="gap: 0.75rem;">
+              <label class="mn-field">
+                <span class="mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ</span>
+                <input
+                  class="mn-input mn-input-latin"
+                  type="text"
+                  name="code"
+                  placeholder="123456"
+                  required
+                />
+              </label>
+              <button type="submit" class="mn-text btn btn-primary">ᠪᠠᠲᠤᠯᠠᠬᠤ</button>
             </form>
           <% end %>
         <% end %>
         <%= if @mfa_message do %>
-          <p class="mn-p mn-latin">{@mfa_message}</p>
+          <p class="mn-p mn-text">{@mfa_message}</p>
         <% end %>
       </article>
     </.account_shell>

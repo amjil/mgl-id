@@ -11,7 +11,7 @@ defmodule MglIdWeb.Account.ProfileLive do
 
     {:ok,
      socket
-     |> assign(page_title: "Profile")
+     |> assign(page_title: "ᠮᠡᠳᠡᠭᠡᠯᠡᠯ")
      |> assign(
        form:
          to_form(%{
@@ -35,19 +35,19 @@ defmodule MglIdWeb.Account.ProfileLive do
          |> assign(form: to_form(params))}
 
       {:error, _} ->
-        {:noreply, put_flash(socket, :error, "Could not save profile")}
+        {:noreply, put_flash(socket, :error, "ᠮᠡᠳᠡᠭᠡᠯᠡᠯ ᠬᠠᠳᠠᠭᠠᠯᠠᠵᠤ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ")}
     end
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="profile">
+    <.account_shell current_user={@current_user} active="profile" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Profile</h1>
-        <form phx-submit="save" class="mn-stack mn-latin" style="gap: 1rem;">
-          <label>
-            Display name
+        <h1 class="mn-h1 mn-text">ᠮᠡᠳᠡᠭᠡᠯᠡᠯ</h1>
+        <form phx-submit="save" class="mn-stack" style="gap: 1rem;">
+          <label class="mn-field">
+            <span class="mn-text">ᠨᠡᠷ᠎ᠡ</span>
             <input
               class="mn-input"
               type="text"
@@ -55,8 +55,8 @@ defmodule MglIdWeb.Account.ProfileLive do
               value={@form[:display_name].value}
             />
           </label>
-          <label>
-            Locale
+          <label class="mn-field">
+            <span class="mn-text">ᠬᠡᠯᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="text"
@@ -64,8 +64,8 @@ defmodule MglIdWeb.Account.ProfileLive do
               value={@form[:locale].value}
             />
           </label>
-          <label>
-            Timezone
+          <label class="mn-field">
+            <span class="mn-text">ᠴᠠᠭ ᠤᠨ ᠪᠦᠰᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="text"
@@ -73,13 +73,14 @@ defmodule MglIdWeb.Account.ProfileLive do
               value={@form[:timezone].value}
             />
           </label>
-          <label>
-            Bio <textarea class="mn-textarea" name="bio">{@form[:bio].value}</textarea>
+          <label class="mn-field">
+            <span class="mn-text">ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠭ᠎ᠠ</span>
+            <textarea class="mn-textarea" name="bio">{@form[:bio].value}</textarea>
           </label>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="mn-text btn btn-primary">ᠬᠠᠳᠠᠭᠠᠯᠠᠬᠤ</button>
         </form>
         <%= if @saved do %>
-          <p class="mn-p mn-latin">Saved.</p>
+          <p class="mn-p mn-text">ᠬᠠᠳᠠᠭᠠᠯᠠᠭᠳᠠᠪᠠ᠃</p>
         <% end %>
       </article>
     </.account_shell>

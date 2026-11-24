@@ -60,39 +60,43 @@ defmodule MglIdWeb.Account.LinksLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="links">
+    <.account_shell current_user={@current_user} active="links" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Linked accounts</h1>
-        <p class="mn-p mn-latin">
-          Prove ownership of a product account before linking. Never auto-merged by username or email.
+        <h1 class="mn-h1 mn-text">ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ</h1>
+        <p class="mn-p mn-text">
+          ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠦ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
         </p>
 
-        <div class="mn-stack mn-latin" style="gap: 1.25rem; margin-top: 1rem;">
+        <div class="mn-columns" style="gap: 1.25rem;">
           <%= for p <- @providers do %>
-            <div>
-              <p class="font-semibold">{p.name}</p>
+            <div class="mn-callout mn-stack">
+              <p class="mn-p mn-upright font-semibold">{p.name}</p>
               <%= if p.linked? do %>
                 <% link = Enum.find(@links, &(&1.provider == p.id)) %>
-                <p>Linked · external id {link.external_user_id}</p>
-                <form phx-submit="unlink" class="mn-stack" style="gap: 0.5rem; margin-top: 0.5rem;">
+                <p class="mn-p mn-text">
+                  ᠬᠣᠯᠪᠤᠭᠳᠠᠭᠰᠠᠨ · <span class="mn-upright">{link.external_user_id}</span>
+                </p>
+                <form phx-submit="unlink" class="mn-stack" style="gap: 0.75rem;">
                   <input type="hidden" name="link_id" value={link.id} />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password to unlink"
-                    class="mn-latin input input-bordered input-sm"
-                    required
-                  />
-                  <button type="submit" class="btn btn-sm btn-outline">Unlink</button>
+                  <label class="mn-field">
+                    <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
+                    <input
+                      type="password"
+                      name="password"
+                      class="mn-input mn-input-latin"
+                      required
+                    />
+                  </label>
+                  <button type="submit" class="mn-text btn btn-ghost">ᠰᠠᠯᠭᠠᠬᠤ</button>
                 </form>
               <% else %>
                 <button
                   type="button"
-                  class="btn btn-sm"
+                  class="mn-text btn btn-primary"
                   phx-click="initiate"
                   phx-value-provider={p.id}
                 >
-                  Link {p.name}
+                  ᠬᠣᠯᠪᠤᠬᠤ
                 </button>
               <% end %>
             </div>

@@ -8,7 +8,7 @@ defmodule MglIdWeb.Account.SessionsLive do
   @impl true
   def mount(_params, _session, socket) do
     sessions = Sessions.list_user_sessions(socket.assigns.current_user.id)
-    {:ok, assign(socket, page_title: "Sessions", sessions: sessions)}
+    {:ok, assign(socket, page_title: "ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ", sessions: sessions)}
   end
 
   @impl true
@@ -28,20 +28,30 @@ defmodule MglIdWeb.Account.SessionsLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="sessions">
+    <.account_shell current_user={@current_user} active="sessions" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Sessions</h1>
-        <button phx-click="revoke_all" class="btn btn-ghost mn-latin">Revoke other sessions</button>
-        <div class="mn-stack mn-latin" style="gap: 1rem; margin-top: 1rem;">
+        <h1 class="mn-h1 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ</h1>
+        <button phx-click="revoke_all" class="mn-text btn btn-ghost">
+          ᠪᠤᠰᠤᠳ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
+        </button>
+        <div class="mn-columns" style="gap: 1rem;">
           <%= for s <- @sessions do %>
-            <div>
-              <p>Device: {s.device_name || "unknown"}</p>
-              <p>IP: {s.ip_address}</p>
-              <p>Last active: {s.last_active_at}</p>
+            <div class="mn-callout mn-stack">
+              <p class="mn-p mn-text">
+                ᠲᠥᠬᠥᠭᠡᠷᠦᠮᠵᠢ: <span class="mn-upright">{s.device_name || "unknown"}</span>
+              </p>
+              <p class="mn-p mn-text">
+                <span class="mn-upright">IP</span>: <span class="mn-upright">{s.ip_address}</span>
+              </p>
+              <p class="mn-p mn-text">
+                ᠰᠡᠭᠦᠯᠴᠢ ᠶᠢᠨ ᠢᠳᠡᠪᠬᠢ: <span class="mn-upright">{s.last_active_at}</span>
+              </p>
               <%= if @current_session && s.id == @current_session.id do %>
-                <p>Current session</p>
+                <p class="mn-p mn-text">ᠣᠳᠤ ᠶᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ</p>
               <% else %>
-                <button phx-click="revoke" phx-value-id={s.id} class="btn btn-sm">Revoke</button>
+                <button phx-click="revoke" phx-value-id={s.id} class="mn-text btn">
+                  ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
+                </button>
               <% end %>
             </div>
           <% end %>

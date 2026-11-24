@@ -7,7 +7,7 @@ defmodule MglIdWeb.Account.PrivacyLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "Privacy", message: nil)}
+    {:ok, assign(socket, page_title: "ᠨᠢᠭᠤᠴᠠᠯᠠᠯ", message: nil)}
   end
 
   @impl true
@@ -17,27 +17,27 @@ defmodule MglIdWeb.Account.PrivacyLive do
     {:noreply,
      socket
      |> assign(current_user: user)
-     |> assign(message: "Deletion requested. Account marked deletion_pending.")}
+     |> assign(message: "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠭᠳᠡᠪᠡ᠃")}
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <.account_shell current_user={@current_user} active="privacy">
+    <.account_shell current_user={@current_user} active="privacy" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-latin">Privacy</h1>
-        <p class="mn-p mn-latin">
-          Request account deletion. This starts a deletion workflow and does not erase data immediately.
+        <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠᠯᠠᠯ</h1>
+        <p class="mn-p mn-text">
+          ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ᠃ ᠡᠨᠡ ᠨᠢ ᠳᠠᠷᠤᠢ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠦᠭᠡᠢ ᠪᠥᠭᠡᠳ ᠰᠢᠯᠭᠠᠬᠤ ᠶᠠᠪᠤᠴᠠ ᠡᠬᠢᠯᠡᠭᠦᠯᠦᠨ᠎ᠡ᠃
         </p>
         <button
           phx-click="delete"
-          data-confirm="Request account deletion?"
-          class="btn btn-ghost mn-latin"
+          data-confirm="ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ ᠦᠦ?"
+          class="mn-text btn btn-ghost"
         >
-          Request deletion
+          ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ
         </button>
         <%= if @message do %>
-          <p class="mn-p mn-latin">{@message}</p>
+          <p class="mn-p mn-text">{@message}</p>
         <% end %>
       </article>
     </.account_shell>

@@ -28,7 +28,7 @@ defmodule MglIdWeb.Admin.UsersLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="users">
+    <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">Users</h1>
         <form phx-change="search" class="mn-latin">

@@ -11,7 +11,7 @@ defmodule MglIdWeb.Auth.LoginLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.mn_shell title="Mgl ID">
+    <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</h1>
         <p class="mn-p mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠡᠷ ᠨᠡᠪᠲᠡᠷᠡ</p>

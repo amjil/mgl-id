@@ -34,7 +34,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <.admin_shell active="registrations">
+    <.admin_shell active="registrations" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-latin">Pending registrations</h1>
         <%= if @reviews == [] do %>
