@@ -10,12 +10,7 @@
         <li>{scope_label(s)}</li>
       <% end %>
     </ul>
-    <form
-      action={~p"/oauth/consent"}
-      method="post"
-      class="mn-stack"
-      style="gap: 0.75rem;"
-    >
+    <form action={~p"/oauth/consent"} method="post" class="mn-form">
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
       <input type="hidden" name="client_id" value={@client_id} />
       <input type="hidden" name="scope" value={@scope} />

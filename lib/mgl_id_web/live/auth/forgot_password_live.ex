@@ -28,7 +28,7 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
             ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠪᠤᠯ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ ᠢᠮᠡᠯ ᠢᠯᠡᠭᠡᠪᠡ᠃
           </p>
         <% else %>
-          <form phx-submit="submit" class="mn-stack" style="gap: 1rem;">
+          <form phx-submit="submit" class="mn-form">
             <label class="mn-field">
               <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
               <input class="mn-input mn-input-latin" type="text" name="username" required />

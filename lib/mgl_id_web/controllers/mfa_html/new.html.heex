@@ -2,7 +2,7 @@
   <article class="mn-doc">
     <h1 class="mn-h1 mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ</h1>
     <p class="mn-p mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
-    <form action={~p"/mfa"} method="post" class="mn-stack" style="gap: 1rem;">
+    <form action={~p"/mfa"} method="post" class="mn-form">
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
       <input
         class="mn-input mn-input-latin"

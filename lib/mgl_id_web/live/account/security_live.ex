@@ -81,7 +81,7 @@ defmodule MglIdWeb.Account.SecurityLive do
         <h1 class="mn-h1 mn-text">ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ</h1>
 
         <h2 class="mn-h2 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠣᠯᠢᠬᠤ</h2>
-        <form phx-submit="change_password" class="mn-stack" style="gap: 1rem;">
+        <form phx-submit="change_password" class="mn-form">
           <label class="mn-field">
             <span class="mn-text">ᠣᠳᠤ ᠶᠢᠨ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
             <input class="mn-input mn-input-latin" type="password" name="current_password" required />
@@ -113,7 +113,7 @@ defmodule MglIdWeb.Account.SecurityLive do
           <%= if @mfa_uri do %>
             <%!-- Keep otpauth URI readable for copy/paste --%>
             <p class="mn-p mn-latin" style="word-break: break-all;">{@mfa_uri}</p>
-            <form phx-submit="mfa_confirm" class="mn-stack" style="gap: 0.75rem;">
+            <form phx-submit="mfa_confirm" class="mn-form">
               <label class="mn-field">
                 <span class="mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ</span>
                 <input

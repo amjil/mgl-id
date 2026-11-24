@@ -16,7 +16,7 @@ defmodule MglIdWeb.Auth.RegisterLive do
         <h1 class="mn-h1 mn-text">ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</h1>
         <p class="mn-p mn-text">ᠮᠢᠨᠤ Mgl ID ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ</p>
 
-        <form action={~p"/register"} method="post" class="mn-stack" style="gap: 1rem;">
+        <form action={~p"/register"} method="post" class="mn-form">
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
           <label class="mn-field">
             <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>

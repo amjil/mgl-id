@@ -105,12 +105,30 @@
 /* Traditional Mongolian shell / surface / rail (vendored via mix mgl_id.vendor) */
 @import "../vendor/mgl-common-ui/mgl-common-ui.css";
 
-/* Auth / consent forms inside .mn-surface (aligned with Nomio review vertical UI) */
+/* Form layout inside .mn-surface: flow fields left → right */
+.mn-form {
+  display: flex;
+  flex-direction: column; /* left → right in vertical-lr */
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
 .mn-field {
   display: flex;
-  flex-direction: row; /* top → bottom in vertical-lr */
+  flex-direction: row; /* label on top, input below in vertical-lr */
   align-items: flex-start;
-  gap: 0.45rem;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.mn-field > .mn-text {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mn-field > .mn-input,
+.mn-field > .mn-textarea {
+  flex-shrink: 0;
 }
 
 .mn-input-latin {

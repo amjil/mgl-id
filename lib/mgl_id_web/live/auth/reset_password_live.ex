@@ -38,7 +38,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
             ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠭᠳᠡᠪᠡ᠃ <a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>
           </p>
         <% else %>
-          <form phx-submit="submit" class="mn-stack" style="gap: 1rem;">
+          <form phx-submit="submit" class="mn-form">
             <input type="hidden" name="token" value={@token} />
             <label class="mn-field">
               <span class="mn-text">ᠰᠢᠨ᠎ᠡ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>

@@ -78,7 +78,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text"><span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
 
-        <form phx-submit="create" class="mn-stack" style="gap: 0.75rem;">
+        <form phx-submit="create" class="mn-form">
           <label class="mn-field">
             <span class="mn-text">ᠨᠡᠷ᠎ᠡ</span>
             <input class="mn-input mn-input-latin" name="name" required />

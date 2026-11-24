@@ -76,7 +76,7 @@ defmodule MglIdWeb.Account.LinksLive do
                 <p class="mn-p mn-text">
                   ᠬᠣᠯᠪᠤᠭᠳᠠᠭᠰᠠᠨ · <span class="mn-upright">{link.external_user_id}</span>
                 </p>
-                <form phx-submit="unlink" class="mn-stack" style="gap: 0.75rem;">
+                <form phx-submit="unlink" class="mn-form">
                   <input type="hidden" name="link_id" value={link.id} />
                   <label class="mn-field">
                     <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ</span>
