@@ -26,7 +26,7 @@ defmodule MglIdWeb.Account.PrivacyLive do
     <.account_shell current_user={@current_user} active="privacy" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠᠯᠠᠯ</h1>
-        <p class="mn-p mn-text">
+        <p class="mn-lead mn-text">
           ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ᠃ ᠡᠨᠡ ᠨᠢ ᠳᠠᠷᠤᠢ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠦᠭᠡᠢ ᠪᠥᠭᠡᠳ ᠰᠢᠯᠭᠠᠬᠤ ᠶᠠᠪᠤᠴᠠ ᠡᠬᠢᠯᠡᠭᠦᠯᠦᠨ᠎ᠡ᠃
         </p>
         <button

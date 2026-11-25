@@ -1,11 +1,11 @@
 <.mn_shell title="Mgl ID" flash={@flash}>
   <article class="mn-doc">
     <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ</h1>
-    <p class="mn-p mn-text">
+    <p class="mn-lead mn-text">
       <strong class="mn-upright">{(@client && @client.name) || @client_id}</strong>
       ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠳᠦ ᠬᠦᠷᠲᠡᠯ ᠭᠡᠵᠦ ᠭᠤᠶᠤᠵᠤ ᠪᠠᠢᠨ᠎ᠠ᠃
     </p>
-    <ul class="mn-text">
+    <ul class="mn-ul mn-text">
       <%= for s <- @scopes do %>
         <li>{scope_label(s)}</li>
       <% end %>

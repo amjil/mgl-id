@@ -4,6 +4,8 @@ defmodule MglIdWeb.MnComponents do
   """
   use Phoenix.Component
 
+  alias Phoenix.LiveView.JS
+
   attr :title, :string, default: "Mgl ID"
   attr :subtitle, :string, default: nil
   attr :flash, :map, default: %{}
@@ -17,7 +19,7 @@ defmodule MglIdWeb.MnComponents do
         <a class="mn-brand" href="/" title={@title}>
           <span class="mn-brand-seal" aria-hidden="true">ᠮ</span>
           <span class="mn-brand-name">{@title}</span>
-          <span :if={@subtitle} class="mn-rail-link mn-text">{@subtitle}</span>
+          <span :if={@subtitle} class="mn-brand-sub">{@subtitle}</span>
         </a>
         <nav :if={@rail != []} class="mn-rail-nav">
           {render_slot(@rail)}
@@ -25,11 +27,23 @@ defmodule MglIdWeb.MnComponents do
       </aside>
       <main class="mn-surface" data-mn-drag phx-hook="MongolianScroll" id="mn-surface">
         <div class="mn-surface-inner mn-columns">
-          <%!-- Render flash messages inline in vertical-lr flow --%>
-          <div :if={msg = Phoenix.Flash.get(@flash, :info)} class="mn-flash mn-flash--info mn-text" role="status">
+          <%!-- Clickable inline flash notices in vertical-lr flow --%>
+          <div
+            :if={msg = Phoenix.Flash.get(@flash, :info)}
+            id="mn-flash-info"
+            class="mn-flash mn-flash--info mn-text"
+            role="status"
+            phx-click={JS.push("lv:clear-flash", value: %{key: :info}) |> JS.hide(to: "#mn-flash-info")}
+          >
             {msg}
           </div>
-          <div :if={msg = Phoenix.Flash.get(@flash, :error)} class="mn-flash mn-flash--error mn-text" role="alert">
+          <div
+            :if={msg = Phoenix.Flash.get(@flash, :error)}
+            id="mn-flash-error"
+            class="mn-flash mn-flash--error mn-text"
+            role="alert"
+            phx-click={JS.push("lv:clear-flash", value: %{key: :error}) |> JS.hide(to: "#mn-flash-error")}
+          >
             {msg}
           </div>
           {render_slot(@inner_block)}

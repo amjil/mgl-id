@@ -14,7 +14,7 @@ defmodule MglIdWeb.Admin.HomeLive do
     <.admin_shell active="home" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</h1>
-        <p class="mn-p mn-text">
+        <p class="mn-lead mn-text">
           ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠂ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠪᠠ <span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠶᠢ ᠤᠳᠢᠷᠳᠤᠬᠤ᠃
         </p>
       </article>

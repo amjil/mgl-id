@@ -1,24 +1,11 @@
 /**
- * Wheel / keyboard / drag for vertical-lr `.mn-surface` shells.
- * Runtime lives in mgl-common-ui; this hook keeps phx-hook="MongolianScroll"
- * markup from erroring and rebinds after LiveView morphs.
+ * Ensures mgl-common-ui's global scroll runtime is active after LiveView mounts.
+ * Do not also call bindSurface() here: install() already delegates wheel/keyboard/drag globally.
  */
-import {install, bindSurface} from "mgl-common-ui"
-
-let globalInstalled = false
-
-function ensureGlobalInstall() {
-  if (globalInstalled) return
-  install({selector: ".mn-surface"})
-  globalInstalled = true
-}
+import {install} from "mgl-common-ui"
 
 export const MongolianScroll = {
   mounted() {
-    ensureGlobalInstall()
-    this._stop = bindSurface(this.el, {keyboard: true, drag: true})
-  },
-  destroyed() {
-    if (this._stop) this._stop()
+    install({selector: ".mn-surface"})
   },
 }

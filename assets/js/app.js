@@ -1,22 +1,3 @@
-// If you want to use Phoenix channels, run `mix help phx.gen.channel`
-// to get started and then uncomment the line below.
-// import "./user_socket.js"
-
-// You can include dependencies in two ways.
-//
-// The simplest option is to put them in assets/vendor and
-// import them using relative paths:
-//
-//     import "../vendor/some-package.js"
-//
-// Alternatively, you can `npm install some-package --prefix assets` and import
-// them using a path starting with the package name:
-//
-//     import "some-package"
-//
-// If you have dependencies that try to import CSS, esbuild will generate a separate `app.css` file.
-// To load it, simply add a second `<link>` to your `root.html.heex` file.
-
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
@@ -24,10 +5,12 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/mgl_id"
 import topbar from "../vendor/topbar"
-import {initVisualViewport} from "mgl-common-ui"
+import {initVisualViewport, install as installMongolianScroll} from "mgl-common-ui"
 import {MongolianScroll} from "./hooks/mongolian-scroll"
 
+// Initialize viewport and vertical-lr scroll globally (works on both LiveView and controller pages)
 initVisualViewport()
+installMongolianScroll({selector: ".mn-surface"})
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {
@@ -36,8 +19,12 @@ const liveSocket = new LiveSocket("/live", Socket, {
   hooks: {...colocatedHooks, MongolianScroll},
 })
 
-// Show progress bar on live navigation and form submits
-topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
+// Match progress bar with the jade palette
+topbar.config({
+  barThickness: 2,
+  barColors: {0: "#2f7d5f", 1: "#8a6a2c"},
+  shadowColor: "rgba(47, 125, 95, 0.25)",
+})
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 
@@ -84,4 +71,3 @@ if (process.env.NODE_ENV === "development") {
     window.liveReloader = reloader
   })
 }
-

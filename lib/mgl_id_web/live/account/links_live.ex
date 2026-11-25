@@ -63,7 +63,7 @@ defmodule MglIdWeb.Account.LinksLive do
     <.account_shell current_user={@current_user} active="links" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ</h1>
-        <p class="mn-p mn-text">
+        <p class="mn-lead mn-text">
           ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠦ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
         </p>
 

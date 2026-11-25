@@ -80,7 +80,7 @@ defmodule MglIdWeb.ErrorHTML do
             <h1 class="mn-h1 mn-text">
               <span class="mn-upright">{@status_code}</span> · {@heading}
             </h1>
-            <p class={["mn-p", if(@latin_description?, do: "mn-sideways", else: "mn-text")]}>
+            <p class={["mn-lead", if(@latin_description?, do: "mn-sideways", else: "mn-text")]}>
               {@description}
             </p>
             <%!-- Use mn-actions so vertical buttons flow left -> right --%>

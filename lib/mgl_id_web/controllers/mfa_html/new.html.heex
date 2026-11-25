@@ -1,16 +1,20 @@
 <.mn_shell title="Mgl ID" flash={@flash}>
   <article class="mn-doc">
     <h1 class="mn-h1 mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ</h1>
-    <p class="mn-p mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
+    <p class="mn-lead mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
     <form action={~p"/mfa"} method="post" class="mn-form">
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
-      <input
-        class="mn-input mn-input-latin"
-        type="text"
-        name="code"
-        required
-        autocomplete="one-time-code"
-      />
+      <label class="mn-field">
+        <span class="mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ</span>
+        <input
+          class="mn-input mn-input-latin"
+          type="text"
+          name="code"
+          inputmode="numeric"
+          required
+          autocomplete="one-time-code"
+        />
+      </label>
       <button type="submit" class="mn-text btn btn-primary">ᠰᠢᠯᠭᠠᠬᠤ</button>
     </form>
   </article>

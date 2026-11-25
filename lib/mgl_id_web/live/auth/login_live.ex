@@ -14,7 +14,7 @@ defmodule MglIdWeb.Auth.LoginLive do
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</h1>
-        <p class="mn-p mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠡᠷ ᠨᠡᠪᠲᠡᠷᠡ</p>
+        <p class="mn-lead mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠡᠷ ᠨᠡᠪᠲᠡᠷᠡ</p>
 
         <form action={~p"/login"} method="post" class="mn-form">
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />

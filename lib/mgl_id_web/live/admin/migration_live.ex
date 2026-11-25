@@ -17,7 +17,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
     <.admin_shell active="migration" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠪᠦᠷᠲᠦᠭᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ</h1>
-        <p class="mn-p mn-text">
+        <p class="mn-lead mn-text">
           ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
         </p>
         <div class="mn-columns" style="gap: 0.85rem;">
