@@ -29,10 +29,10 @@ defmodule MglIdWeb.Account.ApplicationsLive do
         <% else %>
           <div class="mn-columns" style="gap: 1rem;">
             <%= for app <- @apps do %>
-              <div class="mn-callout mn-stack">
+              <div class="mn-callout">
                 <p class="mn-p mn-upright">{(app.client && app.client.name) || app.client_id}</p>
                 <p class="mn-p mn-text">
-                  ᠡᠷᠬᠡ: <span class="mn-upright">{Enum.join(app.scopes, ", ")}</span>
+                  ᠡᠷᠬᠡ: <span class="mn-sideways">{Enum.join(app.scopes, ", ")}</span>
                 </p>
                 <button phx-click="revoke" phx-value-client_id={app.client_id} class="mn-text btn">
                   ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ

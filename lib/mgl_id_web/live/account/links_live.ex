@@ -17,29 +17,29 @@ defmodule MglIdWeb.Account.LinksLive do
         {:noreply, redirect(socket, external: result.redirect_url)}
 
       {:error, {:account_link_exists, _}} ->
-        {:noreply, put_flash(socket, :error, "Already linked")}
+        {:noreply, put_flash(socket, :error, "ᠨᠢᠭᠡᠨᠲᠡ ᠬᠣᠯᠪᠤᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")}
 
       {:error, :invalid_provider} ->
-        {:noreply, put_flash(socket, :error, "Unknown provider")}
+        {:noreply, put_flash(socket, :error, "ᠲᠣᠳᠤᠷᠬᠠᠢ ᠦᠭᠡᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ")}
 
       {:error, _} ->
-        {:noreply, put_flash(socket, :error, "Could not start linking")}
+        {:noreply, put_flash(socket, :error, "ᠬᠣᠯᠪᠤᠬᠤ ᠶᠠᠪᠤᠴᠠ ᠡᠬᠢᠯᠡᠭᠦᠯᠵᠦ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ")}
     end
   end
 
   def handle_event("unlink", %{"link_id" => id, "password" => password}, socket) do
     case AccountLinks.unlink(socket.assigns.current_user, id, password) do
       {:ok, _} ->
-        {:noreply, socket |> put_flash(:info, "Unlinked") |> refresh()}
+        {:noreply, socket |> put_flash(:info, "ᠬᠣᠯᠪᠤᠭ᠎ᠠ ᠰᠠᠯᠭᠠᠭᠳᠠᠪᠠ") |> refresh()}
 
       {:error, :invalid_credentials} ->
-        {:noreply, put_flash(socket, :error, "Password incorrect")}
+        {:noreply, put_flash(socket, :error, "ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠤᠷᠤᠤ")}
 
       {:error, :not_found} ->
-        {:noreply, put_flash(socket, :error, "Link not found")}
+        {:noreply, put_flash(socket, :error, "ᠬᠣᠯᠪᠤᠭ᠎ᠠ ᠣᠯᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ")}
 
       {:error, _} ->
-        {:noreply, put_flash(socket, :error, "Could not unlink")}
+        {:noreply, put_flash(socket, :error, "ᠬᠣᠯᠪᠤᠭ᠎ᠠ ᠰᠠᠯᠭᠠᠵᠤ ᠴᠢᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ")}
     end
   end
 
@@ -54,7 +54,7 @@ defmodule MglIdWeb.Account.LinksLive do
         %{id: p, name: Map.get(cfg, :name, p), linked?: MapSet.member?(linked_providers, p)}
       end)
 
-    assign(socket, page_title: "Linked accounts", links: links, providers: providers)
+    assign(socket, page_title: "ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ", links: links, providers: providers)
   end
 
   @impl true
@@ -69,7 +69,7 @@ defmodule MglIdWeb.Account.LinksLive do
 
         <div class="mn-columns" style="gap: 1.25rem;">
           <%= for p <- @providers do %>
-            <div class="mn-callout mn-stack">
+            <div class="mn-callout">
               <p class="mn-p mn-upright font-semibold">{p.name}</p>
               <%= if p.linked? do %>
                 <% link = Enum.find(@links, &(&1.provider == p.id)) %>

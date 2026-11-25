@@ -22,7 +22,7 @@ defmodule MglIdWeb.Plugs.RequireAdmin do
         |> halt()
       else
         conn
-        |> put_flash(:error, "Forbidden")
+        |> put_flash(:error, "ᠡᠷᠬᠡ ᠬᠦᠷᠦᠯᠴᠡᠬᠦ ᠦᠭᠡᠢ")
         |> redirect(to: "/")
         |> halt()
       end

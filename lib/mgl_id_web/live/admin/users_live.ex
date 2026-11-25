@@ -31,7 +31,7 @@ defmodule MglIdWeb.Admin.UsersLive do
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ</h1>
-        <form phx-change="search" class="mn-stack">
+        <form phx-change="search" class="mn-form">
           <label class="mn-field">
             <span class="mn-text">ᠬᠠᠢᠬᠤ</span>
             <input

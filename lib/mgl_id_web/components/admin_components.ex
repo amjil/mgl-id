@@ -15,7 +15,7 @@ defmodule MglIdWeb.AdminComponents do
 
   def admin_shell(assigns) do
     ~H"""
-    <.mn_shell title="Mgl ID ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ" flash={@flash}>
+    <.mn_shell title="Mgl ID" subtitle="ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ" flash={@flash}>
       <:rail>
         <a class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"} href={~p"/admin"}>
           ᠬᠢᠨᠠᠯᠲᠠ

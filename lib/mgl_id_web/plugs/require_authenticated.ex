@@ -18,7 +18,7 @@ defmodule MglIdWeb.Plugs.RequireAuthenticated do
         |> halt()
       else
         conn
-        |> put_flash(:error, "Please log in")
+        |> put_flash(:error, "ᠡᠬᠢᠯᠡᠭᠡᠳ ᠨᠡᠪᠲᠡᠷᠡᠭᠡᠷᠡᠢ")
         |> redirect(to: "/login")
         |> halt()
       end

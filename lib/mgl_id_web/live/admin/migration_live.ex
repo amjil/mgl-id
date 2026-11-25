@@ -20,7 +20,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
         <p class="mn-p mn-text">
           ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
         </p>
-        <div class="mn-stack" style="gap: 0.75rem;">
+        <div class="mn-columns" style="gap: 0.85rem;">
           <p class="mn-p mn-text">
             ᠨᠡᠢᠲᠡ ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-upright">{@stats.linked_total}</span>
           </p>

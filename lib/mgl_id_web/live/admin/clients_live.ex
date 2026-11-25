@@ -114,8 +114,10 @@ defmodule MglIdWeb.Admin.ClientsLive do
 
         <div class="mn-columns" style="gap: 1rem;">
           <%= for c <- @clients do %>
-            <div class="mn-callout mn-stack">
-              <p class="mn-p mn-upright">{c.name} — {c.id}</p>
+            <div class="mn-callout">
+              <p class="mn-p mn-text">
+                <span class="mn-upright">{c.name}</span> — <span class="mn-sideways">{c.id}</span>
+              </p>
               <p class="mn-p mn-text">
                 <span class="mn-upright">PKCE: {inspect(c.pkce)}</span> ·
                 <span class="mn-upright">confidential: {inspect(c.confidential)}</span>

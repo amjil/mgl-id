@@ -42,12 +42,12 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
         <% else %>
           <div class="mn-columns" style="gap: 1.25rem;">
             <%= for review <- @reviews do %>
-              <div class="mn-callout mn-stack">
+              <div class="mn-callout">
                 <p class="mn-p mn-text">
                   <span class="mn-upright">{review.user.username}</span> —
-                  <span class="mn-upright">{inspect(review.risk_signals)}</span>
+                  <span class="mn-sideways">{inspect(review.risk_signals)}</span>
                 </p>
-                <div class="mn-stack" style="gap: 0.5rem;">
+                <div class="mn-actions">
                   <button
                     phx-click="approve"
                     phx-value-id={review.id}

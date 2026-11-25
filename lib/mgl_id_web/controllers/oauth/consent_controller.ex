@@ -34,7 +34,7 @@ defmodule MglIdWeb.Oauth.ConsentController do
   def create(conn, _params) do
     conn
     |> delete_session(:oauth_consent_return_to)
-    |> put_flash(:error, "Authorization denied")
+    |> put_flash(:error, "ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠯ ᠲᠠᠲᠠᠭᠠᠯᠵᠠᠭᠳᠠᠪᠠ")
     |> redirect(to: ~p"/account")
   end
 

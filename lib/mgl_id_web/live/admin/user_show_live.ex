@@ -49,7 +49,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
       <article class="mn-doc">
         <h1 class="mn-h1 mn-upright">{@user.username}</h1>
         <p class="mn-p mn-text">
-          <span class="mn-upright">ID</span>: <span class="mn-upright">{@user.id}</span>
+          <span class="mn-upright">ID</span>: <span class="mn-sideways">{@user.id}</span>
         </p>
         <p class="mn-p mn-text">
           ᠪᠠᠶᠢᠳᠠᠯ: <span class="mn-upright">{@user.status}</span>
@@ -61,7 +61,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
           ᠢᠲᠡᠭᠡᠯ ᠦᠨ ᠲᠦᠪᠰᠢᠨ: <span class="mn-upright">{@user.trust_level}</span>
         </p>
 
-        <div class="mn-stack" style="gap: 0.5rem;">
+        <div class="mn-actions">
           <button phx-click="status" phx-value-status="active" class="mn-text btn btn-primary">
             ᠢᠳᠡᠪᠬᠢᠵᠢᠭᠦᠯᠬᠦ
           </button>
@@ -78,9 +78,9 @@ defmodule MglIdWeb.Admin.UserShowLive do
         <h2 class="mn-h2 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
         <%= for a <- @attempts do %>
           <p class="mn-p mn-text">
-            <span class="mn-upright">{a.inserted_at}</span> —
+            <span class="mn-sideways">{a.inserted_at}</span> —
             {if a.success, do: "ᠠᠮᠵᠢᠯᠲᠠᠲᠠᠢ", else: "ᠠᠮᠵᠢᠯᠲᠠᠭᠦᠢ"} —
-            <span class="mn-upright">{a.ip_address}</span>
+            <span class="mn-sideways">{a.ip_address}</span>
           </p>
         <% end %>
 

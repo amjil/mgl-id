@@ -5,6 +5,7 @@ defmodule MglIdWeb.MnComponents do
   use Phoenix.Component
 
   attr :title, :string, default: "Mgl ID"
+  attr :subtitle, :string, default: nil
   attr :flash, :map, default: %{}
   slot :inner_block, required: true
   slot :rail
@@ -16,6 +17,7 @@ defmodule MglIdWeb.MnComponents do
         <a class="mn-brand" href="/" title={@title}>
           <span class="mn-brand-seal" aria-hidden="true">ᠮ</span>
           <span class="mn-brand-name">{@title}</span>
+          <span :if={@subtitle} class="mn-rail-link mn-text">{@subtitle}</span>
         </a>
         <nav :if={@rail != []} class="mn-rail-nav">
           {render_slot(@rail)}

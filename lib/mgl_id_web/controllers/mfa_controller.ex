@@ -14,7 +14,7 @@ defmodule MglIdWeb.MfaController do
 
       not Mfa.enabled?(user) ->
         conn
-        |> put_flash(:error, "Set up MFA in Security settings before using admin.")
+        |> put_flash(:error, "ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠤᠭᠠᠷᠠᠢ")
         |> redirect(to: ~p"/account/security")
 
       true ->
@@ -36,7 +36,7 @@ defmodule MglIdWeb.MfaController do
 
       {:error, _} ->
         conn
-        |> put_flash(:error, "Invalid MFA code")
+        |> put_flash(:error, "ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ ᠪᠤᠷᠤᠤ")
         |> redirect(to: ~p"/mfa")
     end
   end

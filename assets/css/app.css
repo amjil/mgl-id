@@ -443,6 +443,30 @@
 
 /* ---------- Cards, Callouts & Flash Notices --------------------------- */
 
+/* Flow vertical buttons left -> right inside vertical-lr surfaces */
+.mn-actions {
+  display: flex;
+  flex-direction: column; /* left -> right in vertical-lr */
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Long Latin/digit runs (UUIDs, timestamps, scopes) flow along the vertical column */
+.mn-sideways {
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  text-orientation: sideways;
+  font-family: var(--mn-font-ui);
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+}
+
+/* Cap horizontal copy/paste blocks (otpauth URI, client secrets) inside vertical docs */
+.mn-doc .mn-latin {
+  max-width: min(26rem, calc(100vw - 6rem));
+  overflow-wrap: anywhere;
+}
+
 .mn-callout {
   display: flex;
   flex-direction: column; /* flow columns left -> right inside cards */

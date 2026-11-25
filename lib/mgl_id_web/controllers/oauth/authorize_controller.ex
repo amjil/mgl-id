@@ -58,10 +58,34 @@ defmodule MglIdWeb.Oauth.AuthorizeController do
 
     body = """
     <!DOCTYPE html>
-    <html><body class="mn-latin">
-    <h1>#{esc.(error)}</h1>
-    <p>#{esc.(error_description)}</p>
-    </body></html>
+    <html lang="mn-Mong" dir="ltr">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="stylesheet" href="/assets/css/app.css" />
+        <title>Mgl ID</title>
+      </head>
+      <body>
+        <div class="mn-shell mn-shell--standalone">
+          <aside class="mn-rail">
+            <a class="mn-brand" href="/">
+              <span class="mn-brand-seal" aria-hidden="true">ᠮ</span>
+              <span class="mn-brand-name">Mgl ID</span>
+            </a>
+          </aside>
+          <main class="mn-surface">
+            <div class="mn-surface-inner mn-columns">
+              <article class="mn-doc">
+                <h1 class="mn-h1 mn-text">ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠯ ᠦᠨ ᠠᠯᠳᠠᠭ᠎ᠠ</h1>
+                <p class="mn-p mn-sideways">#{esc.(error)}</p>
+                <p class="mn-p mn-latin">#{esc.(error_description)}</p>
+                <p class="mn-p mn-text"><a href="/">ᠭᠡᠷ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a></p>
+              </article>
+            </div>
+          </main>
+        </div>
+      </body>
+    </html>
     """
 
     conn

@@ -17,22 +17,22 @@ defmodule MglIdWeb.SessionController do
         conn
         |> delete_session(:user_return_to)
         |> UserAuth.log_in_user(token)
-        |> put_flash(:info, "Welcome back")
+        |> put_flash(:info, "ᠠᠮᠵᠢᠯᠲᠠᠲᠠᠢ ᠨᠡᠪᠲᠡᠷᠡᠪᠡ")
         |> redirect(to: return_to)
 
       {:error, :account_suspended} ->
         conn
-        |> put_flash(:error, "Account suspended")
+        |> put_flash(:error, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠲᠦᠷ ᠵᠣᠭᠰᠤᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
         |> redirect(to: ~p"/login")
 
       {:error, :account_disabled} ->
         conn
-        |> put_flash(:error, "Account disabled")
+        |> put_flash(:error, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠬᠠᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
         |> redirect(to: ~p"/login")
 
       {:error, _} ->
         conn
-        |> put_flash(:error, "Invalid username or password")
+        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠶᠤ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠤᠷᠤᠤ")
         |> redirect(to: ~p"/login")
     end
   end
@@ -44,7 +44,7 @@ defmodule MglIdWeb.SessionController do
 
     conn
     |> UserAuth.log_out_user()
-    |> put_flash(:info, "Logged out")
+    |> put_flash(:info, "ᠰᠢᠰᠲ᠋ᠧᠮ ᠡᠴᠡ ᠭᠠᠷᠪᠠ")
     |> redirect(to: ~p"/login")
   end
 end
