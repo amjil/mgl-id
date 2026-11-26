@@ -76,7 +76,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
 
         <hr class="mn-hr" />
 
-        <h2 class="mn-h2 mn-text">ᠨᠠᠪᠲᠠᠷᠠᠯᠲᠠ᠎ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
+        <h2 class="mn-h2 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ᠎ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
         <%= for a <- @attempts do %>
           <p class="mn-p mn-text">
             <span class="mn-sideways">{format_time(a.inserted_at)}</span> —

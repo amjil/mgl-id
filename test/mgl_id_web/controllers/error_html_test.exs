@@ -8,7 +8,7 @@ defmodule MglIdWeb.ErrorHTMLTest do
     html = render_to_string(MglIdWeb.ErrorHTML, "404", "html", [])
     assert html =~ "lang=\"mn-Mong\""
     assert html =~ "404"
-    assert html =~ "ᠬᠤᠤᠳᠠᠰᠤ ᠣᠯᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ"
+    assert html =~ "ᠬᠠᠭᠤᠳᠠᠰᠤ ᠣᠯᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ"
   end
 
   test "renders 500.html" do

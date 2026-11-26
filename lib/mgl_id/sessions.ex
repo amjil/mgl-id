@@ -11,6 +11,7 @@ defmodule MglId.Sessions do
   alias MglId.Sessions.Session
 
   @default_ttl_days 30
+  @touch_interval_seconds 5 * 60
 
   def create_session(%User{} = user, attrs \\ %{}) do
     token = Crypto.generate_token()
@@ -103,9 +104,22 @@ defmodule MglId.Sessions do
     {:ok, count}
   end
 
+  # Throttled: avoid an UPDATE on every request / LiveView mount.
   defp touch(%Session{} = session) do
-    session
-    |> Session.changeset(%{last_active_at: DateTime.utc_now()})
-    |> Repo.update()
+    now = DateTime.utc_now()
+
+    if stale?(session.last_active_at, now) do
+      session
+      |> Session.changeset(%{last_active_at: now})
+      |> Repo.update()
+    else
+      {:ok, session}
+    end
+  end
+
+  defp stale?(nil, _now), do: true
+
+  defp stale?(last_active_at, now) do
+    DateTime.diff(now, last_active_at, :second) >= @touch_interval_seconds
   end
 end

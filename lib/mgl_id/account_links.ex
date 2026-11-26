@@ -157,9 +157,9 @@ defmodule MglId.AccountLinks do
   end
 
   def unlink(%User{} = user, link_id, password) when is_binary(password) do
-    with true <- Credentials.valid_password?(user.id, password),
+    with {:auth, true} <- {:auth, Credentials.valid_password?(user.id, password)},
          %AccountLink{} = link <- Repo.get_by(AccountLink, id: link_id, user_id: user.id),
-         true <- AccountLink.active?(link) do
+         {:active, true} <- {:active, AccountLink.active?(link)} do
       now = DateTime.utc_now()
 
       case link |> AccountLink.changeset(%{unlinked_at: now}) |> Repo.update() do
@@ -178,8 +178,9 @@ defmodule MglId.AccountLinks do
           other
       end
     else
-      false -> {:error, :invalid_credentials}
+      {:auth, false} -> {:error, :invalid_credentials}
       nil -> {:error, :not_found}
+      {:active, false} -> {:error, :not_found}
     end
   end
 

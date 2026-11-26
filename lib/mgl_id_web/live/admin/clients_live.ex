@@ -5,7 +5,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
   import MglIdWeb.MnComponents
 
   alias Boruta.Ecto.Admin
-  alias MglId.{Clients, Policies}
+  alias MglId.{Audit, Clients, Policies}
 
   @impl true
   def mount(_params, _session, socket) do
@@ -62,14 +62,25 @@ defmodule MglIdWeb.Admin.ClientsLive do
   end
 
   def handle_event("rotate", %{"id" => id}, socket) do
-    client = Clients.get_client!(id)
-    {:ok, client} = Admin.regenerate_client_secret(client)
+    unless Policies.allow?(socket.assigns.current_user, "applications.manage") or
+             socket.assigns.current_user.is_admin do
+      {:noreply, socket}
+    else
+      client = Clients.get_client!(id)
+      {:ok, client} = Admin.regenerate_client_secret(client)
 
-    {:noreply,
-     socket
-     |> assign(clients: Clients.list_clients())
-     |> assign(created: client)
-     |> assign(message: "ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠰᠣᠯᠢᠭᠳᠠᠪᠠ᠃")}
+      Audit.log("admin.client.rotate_secret", %{
+        actor_id: socket.assigns.current_user.id,
+        resource_type: "oauth_client",
+        resource_id: client.id
+      })
+
+      {:noreply,
+       socket
+       |> assign(clients: Clients.list_clients())
+       |> assign(created: client)
+       |> assign(message: "ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠰᠣᠯᠢᠭᠳᠠᠪᠠ᠃")}
+    end
   end
 
   @impl true

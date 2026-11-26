@@ -33,13 +33,18 @@ defmodule MglIdWeb.Account.SessionsLive do
       <article class="mn-doc">
         <.mn_page_head kicker="Account" title="ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ" />
         <button phx-click="revoke_all" class="mn-text btn btn-ghost">
-          ᠪᠤᠰᠤᠳ ᠨᠠᠪᠲᠠᠷᠠᠯᠲᠠ᠎ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
+          ᠪᠤᠰᠤᠳ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ᠎ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
         </button>
         <div class="mn-columns" style="gap: 1rem;">
           <%= for s <- @sessions do %>
             <div class="mn-callout">
               <p class="mn-p mn-text">
-                ᠲᠥᠬᠥᠭᠡᠷᠦᠮᠵᠢ: <span class="mn-sideways">{s.device_name || "ᠲᠣᠳᠤᠷᠬᠠᠢ ᠦᠭᠡᠢ"}</span>
+                ᠲᠥᠬᠥᠭᠡᠷᠦᠮᠵᠢ:
+                <%= if s.device_name do %>
+                  <span class="mn-sideways">{s.device_name}</span>
+                <% else %>
+                  <span>ᠲᠣᠳᠤᠷᠬᠠᠢ ᠦᠭᠡᠢ</span>
+                <% end %>
               </p>
               <p class="mn-p mn-text">
                 <span class="mn-sideways">IP</span>: <span class="mn-sideways">{s.ip_address}</span>

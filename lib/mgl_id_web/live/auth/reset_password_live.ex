@@ -23,7 +23,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
         {:noreply, assign(socket, done: true, error: nil)}
 
       {:error, _} ->
-        {:noreply, assign(socket, error: "ᠰᠢᠯᠲᠠᠭᠠᠰᠤᠨ ᠪᠤᠷᠤᠤ ᠪᠤᠶᠤ ᠬᠦᠴᠦᠨ ᠡᠮᠦ ᠪᠠᠢᠨ᠎ᠠ")}
+        {:noreply, assign(socket, error: "ᠬᠣᠯᠪᠤᠭᠠᠰᠤ ᠪᠤᠷᠤᠤ ᠪᠤᠶᠤ ᠬᠤᠭᠤᠴᠠᠭ᠎ᠠ ᠨᠢ ᠳᠠᠭᠤᠰᠤᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")}
     end
   end
 

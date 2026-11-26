@@ -14,7 +14,7 @@ defmodule MglIdWeb.Auth.LoginLive do
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
         <.mn_page_head kicker="Mgl ID" title="ᠨᠡᠪᠲᠡᠷᠡᠬᠦ">
-          <p class="mn-lead mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ᠎ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠠ ᠤᠤ</p>
+          <p class="mn-lead mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ᠎ᠪᠡᠷ ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</p>
         </.mn_page_head>
 
         <form action={~p"/login"} method="post" class="mn-form">

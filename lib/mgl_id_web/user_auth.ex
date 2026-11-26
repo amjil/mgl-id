@@ -8,6 +8,7 @@ defmodule MglIdWeb.UserAuth do
   alias MglIdWeb.Plugs.FetchCurrentUser
 
   @max_age 60 * 60 * 24 * 30
+  @secure_cookies Application.compile_env(:mgl_id, :secure_cookies, false)
 
   def log_in_user(conn, token) do
     conn
@@ -17,7 +18,8 @@ defmodule MglIdWeb.UserAuth do
       sign: false,
       max_age: @max_age,
       same_site: "Lax",
-      http_only: true
+      http_only: true,
+      secure: @secure_cookies
     )
   end
 
