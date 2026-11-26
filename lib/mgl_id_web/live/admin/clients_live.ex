@@ -2,6 +2,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AdminComponents
+  import MglIdWeb.MnComponents
 
   alias Boruta.Ecto.Admin
   alias MglId.{Clients, Policies}
@@ -76,7 +77,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
     ~H"""
     <.admin_shell active="clients" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text"><span class="mn-sideways">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
+        <.mn_page_head kicker="OAuth" title="ᠬᠡᠷᠡᠭᠯᠡᠭᠡ" />
 
         <form phx-submit="create" class="mn-form">
           <label class="mn-field">
@@ -100,7 +101,6 @@ defmodule MglIdWeb.Admin.ClientsLive do
         </form>
 
         <%= if @created do %>
-          <%!-- Keep credentials horizontal for easy copy/paste --%>
           <div class="mn-callout">
             <p class="mn-p mn-sideways">client_id={@created.id}</p>
             <p class="mn-p mn-sideways">secret={@created.secret}</p>

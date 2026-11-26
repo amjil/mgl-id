@@ -291,8 +291,8 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 0.55rem;
-  padding: 0.75rem 0.45rem;
-  font-size: 13px;
+  padding: 0.55rem 0.42rem;
+  font-size: 15.5px;
   color: var(--mn-muted);
   text-decoration: none;
   background: transparent;
@@ -513,11 +513,11 @@ body {
 }
 
 .mn-shell--standalone .mn-doc > .mn-p:last-child:has(a) {
+  align-self: stretch; /* stretch top -> bottom so the left divider spans full height */
   border-block-start: 1px solid var(--mn-line);
   padding-block-start: 1.15rem;
   color: var(--mn-muted);
   font-size: 0.95rem;
-  width: 100%;
 }
 
 .mn-brand:focus-visible,
@@ -1021,7 +1021,13 @@ a.mn-callout:hover {
   }
 
   .mn-rail-link {
-    font-size: 12px;
-    padding: 0.6rem 0.3rem;
+    font-size: 14.5px;
+    padding: 0.48rem 0.3rem;
+  }
+
+  /* Scale QR smoothly when mobile viewport shrinks */
+  .mn-qr img {
+    width: min(190px, calc(var(--mn-vh) - 10rem));
+    height: auto;
   }
 }

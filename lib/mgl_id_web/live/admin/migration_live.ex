@@ -2,6 +2,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AdminComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.AccountLinks
 
@@ -16,10 +17,11 @@ defmodule MglIdWeb.Admin.MigrationLive do
     ~H"""
     <.admin_shell active="migration" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠪᠦᠷᠲᠦᠭᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ</h1>
-        <p class="mn-lead mn-text">
-          ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
-        </p>
+        <.mn_page_head kicker="Admin" title="ᠪᠦᠷᠲᠦᠭᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ">
+          <p class="mn-lead mn-text">
+            ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
+          </p>
+        </.mn_page_head>
         <div class="mn-columns" style="gap: 0.85rem;">
           <p class="mn-p mn-text">
             ᠨᠡᠢᠲᠡ ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-sideways">{@stats.linked_total}</span>

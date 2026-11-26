@@ -15,7 +15,7 @@ defmodule MglIdWeb.Account.HomeLive do
     <.account_shell current_user={@current_user} active="home" flash={@flash}>
       <article class="mn-doc">
         <.mn_page_head kicker="Account" title="ᠪᠦᠷᠲᠦᠭᠡᠯ">
-          <p class="mn-lead mn-text">ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠶᠢᠨ ᠲᠣᠪᠴᠢ</p>
+          <p class="mn-lead mn-text">ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠦᠨ ᠲᠣᠪᠴᠢ</p>
         </.mn_page_head>
         <div class="mn-callout mn-callout--profile">
           <div class="mn-kv">

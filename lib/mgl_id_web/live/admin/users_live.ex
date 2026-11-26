@@ -2,6 +2,7 @@ defmodule MglIdWeb.Admin.UsersLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AdminComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.Accounts
   alias MglId.Policies
@@ -30,7 +31,7 @@ defmodule MglIdWeb.Admin.UsersLive do
     ~H"""
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ</h1>
+        <.mn_page_head kicker="Admin" title="ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ" />
         <form phx-change="search" class="mn-form">
           <label class="mn-field">
             <span class="mn-text">ᠬᠠᠢᠬᠤ</span>

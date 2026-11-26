@@ -2,6 +2,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AdminComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.{Accounts, Audit, Policies}
   alias MglId.AuthorizedApplications
@@ -47,7 +48,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
     ~H"""
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-sideways">{@user.username}</h1>
+        <.mn_page_head kicker="Admin" title={@user.username} title_class="mn-sideways" />
         <p class="mn-p mn-text">
           <span class="mn-sideways">ID</span>: <span class="mn-sideways">{@user.id}</span>
         </p>

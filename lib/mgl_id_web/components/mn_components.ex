@@ -58,6 +58,7 @@ defmodule MglIdWeb.MnComponents do
   """
   attr :title, :string, required: true
   attr :kicker, :string, default: nil
+  attr :title_class, :string, default: "mn-text"
   slot :inner_block
 
   def mn_page_head(assigns) do
@@ -65,7 +66,7 @@ defmodule MglIdWeb.MnComponents do
     <header class="mn-page-head">
       <span class="mn-ornament" aria-hidden="true"></span>
       <p :if={@kicker} class="mn-kicker">{@kicker}</p>
-      <h1 class="mn-h1 mn-text">{@title}</h1>
+      <h1 class={["mn-h1", @title_class]}>{@title}</h1>
       <div :if={@inner_block != []} class="mn-page-head__lede">
         {render_slot(@inner_block)}
       </div>

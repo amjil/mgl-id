@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.ProfileLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.Accounts
 
@@ -44,7 +45,7 @@ defmodule MglIdWeb.Account.ProfileLive do
     ~H"""
     <.account_shell current_user={@current_user} active="profile" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠮᠡᠳᠡᠭᠡᠯᠡᠯ</h1>
+        <.mn_page_head kicker="Account" title="ᠮᠡᠳᠡᠭᠡᠯᠡᠯ" />
         <form phx-submit="save" class="mn-form">
           <label class="mn-field">
             <span class="mn-text">ᠨᠡᠷ᠎ᠡ</span>

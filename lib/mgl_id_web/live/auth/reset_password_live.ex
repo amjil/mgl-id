@@ -35,7 +35,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
         <.mn_page_head kicker="Mgl ID" title="ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ" />
         <%= if @done do %>
           <p class="mn-p mn-text">
-            ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠭᠳᠡᠪᠡ᠃ <a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>
+            ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠭᠳᠡᠪᠡ᠃ <.link navigate={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</.link>
           </p>
         <% else %>
           <form phx-submit="submit" class="mn-form">

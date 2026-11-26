@@ -2,6 +2,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AdminComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.{Policies, Registrations}
 
@@ -36,7 +37,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
     ~H"""
     <.admin_shell active="registrations" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠪᠦᠷᠢᠳᠬᠡᠯ</h1>
+        <.mn_page_head kicker="Admin" title="ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ ᠪᠦᠷᠢᠳᠬᠡᠯ" />
         <%= if @reviews == [] do %>
           <p class="mn-p mn-text">ᠰᠢᠯᠭᠠᠬᠤ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠭᠡᠢ᠃</p>
         <% else %>

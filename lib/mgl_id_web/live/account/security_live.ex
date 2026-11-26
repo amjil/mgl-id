@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.SecurityLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.{Authentication, Mfa}
 
@@ -90,7 +91,7 @@ defmodule MglIdWeb.Account.SecurityLive do
     ~H"""
     <.account_shell current_user={@current_user} active="security" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ</h1>
+        <.mn_page_head kicker="Account" title="ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ" />
 
         <h2 class="mn-h2 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠣᠯᠢᠬᠤ</h2>
         <form phx-submit="change_password" class="mn-form">
@@ -135,8 +136,10 @@ defmodule MglIdWeb.Account.SecurityLive do
                   class="mn-input mn-input-latin"
                   type="text"
                   name="code"
+                  inputmode="numeric"
                   placeholder="123456"
                   required
+                  autocomplete="one-time-code"
                 />
               </label>
               <button type="submit" class="mn-text btn btn-primary">ᠪᠠᠲᠤᠯᠠᠬᠤ</button>

@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.ApplicationsLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.AuthorizedApplications
 
@@ -23,7 +24,7 @@ defmodule MglIdWeb.Account.ApplicationsLive do
     ~H"""
     <.account_shell current_user={@current_user} active="applications" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠭᠰᠡᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
+        <.mn_page_head kicker="Account" title="ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠭᠰᠡᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ" />
         <%= if @apps == [] do %>
           <p class="mn-p mn-text">ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠭᠰᠡᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠦᠭᠡᠢ᠃</p>
         <% else %>

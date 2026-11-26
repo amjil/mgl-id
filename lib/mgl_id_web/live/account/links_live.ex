@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.LinksLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.AccountLinks
 
@@ -62,10 +63,11 @@ defmodule MglIdWeb.Account.LinksLive do
     ~H"""
     <.account_shell current_user={@current_user} active="links" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ</h1>
-        <p class="mn-lead mn-text">
-          ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠦ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
-        </p>
+        <.mn_page_head kicker="Account" title="ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ">
+          <p class="mn-lead mn-text">
+            ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠦ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
+          </p>
+        </.mn_page_head>
 
         <div class="mn-columns" style="gap: 1.25rem;">
           <%= for p <- @providers do %>

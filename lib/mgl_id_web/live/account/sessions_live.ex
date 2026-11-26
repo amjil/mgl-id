@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.SessionsLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   alias MglId.Sessions
 
@@ -30,7 +31,7 @@ defmodule MglIdWeb.Account.SessionsLive do
     ~H"""
     <.account_shell current_user={@current_user} active="sessions" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ</h1>
+        <.mn_page_head kicker="Account" title="ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ" />
         <button phx-click="revoke_all" class="mn-text btn btn-ghost">
           ᠪᠤᠰᠤᠳ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
         </button>

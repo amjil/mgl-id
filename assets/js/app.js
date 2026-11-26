@@ -19,11 +19,11 @@ const liveSocket = new LiveSocket("/live", Socket, {
   hooks: {...colocatedHooks, MongolianScroll},
 })
 
-// Match progress bar with the jade palette
+// Match progress bar with the steppe-light blue & amber palette
 topbar.config({
   barThickness: 2,
-  barColors: {0: "#2f7d5f", 1: "#8a6a2c"},
-  shadowColor: "rgba(47, 125, 95, 0.25)",
+  barColors: {0: "#1d63b8", 1: "#d97706"},
+  shadowColor: "rgba(29, 99, 184, 0.25)",
 })
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
