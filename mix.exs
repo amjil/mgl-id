@@ -72,6 +72,7 @@ defmodule MglId.MixProject do
       {:jose, "~> 1.11"},
       {:boruta, "~> 2.3"},
       {:nimble_totp, "~> 1.0"},
+      {:eqrcode, "~> 0.1.10"},
       {:oban, "~> 2.24"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},

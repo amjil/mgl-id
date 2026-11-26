@@ -453,6 +453,24 @@
   overflow-wrap: anywhere;
 }
 
+/* Keep MFA QR upright so authenticator apps can scan it. */
+.mn-qr {
+  writing-mode: horizontal-tb;
+  -webkit-writing-mode: horizontal-tb;
+  display: inline-block;
+  padding: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--mn-line);
+  border-radius: 0.75rem;
+  line-height: 0;
+}
+
+.mn-qr img {
+  display: block;
+  width: 240px;
+  height: 240px;
+}
+
 .mn-kv {
   display: flex;
   flex-direction: column; /* left -> right in vertical-lr */

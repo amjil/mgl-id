@@ -14,6 +14,7 @@ defmodule MglIdWeb.Account.SecurityLive do
      |> assign(page_title: "ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ")
      |> assign(mfa_enabled: Mfa.enabled?(user))
      |> assign(mfa_uri: nil)
+     |> assign(mfa_qr: nil)
      |> assign(password_message: nil)
      |> assign(mfa_message: nil)}
   end
@@ -43,9 +44,8 @@ defmodule MglIdWeb.Account.SecurityLive do
      socket
      |> assign(current_user: user)
      |> assign(mfa_uri: uri)
-     |> assign(
-       mfa_message: "ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠪᠡᠷ ᠤᠩᠰᠢᠭᠤᠯᠵᠤ ᠺᠣᠳ ᠢ ᠪᠠᠲᠤᠯᠠᠭᠠᠷᠠᠢ᠃"
-     )}
+     |> assign(mfa_qr: qr_data_uri(uri))
+     |> assign(mfa_message: "ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠪᠡᠷ ᠤᠩᠰᠢᠭᠤᠯᠵᠤ ᠺᠣᠳ ᠢ ᠪᠠᠲᠤᠯᠠᠭᠠᠷᠠᠢ᠃")}
   end
 
   def handle_event("mfa_confirm", %{"code" => code}, socket) do
@@ -56,6 +56,7 @@ defmodule MglIdWeb.Account.SecurityLive do
          |> assign(current_user: user)
          |> assign(mfa_enabled: true)
          |> assign(mfa_uri: nil)
+         |> assign(mfa_qr: nil)
          |> assign(mfa_message: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠨᠡᠭᠡᠭᠡᠭᠳᠡᠪᠡ᠃")}
 
       {:error, _} ->
@@ -70,7 +71,18 @@ defmodule MglIdWeb.Account.SecurityLive do
      socket
      |> assign(current_user: user)
      |> assign(mfa_enabled: false)
+     |> assign(mfa_uri: nil)
+     |> assign(mfa_qr: nil)
      |> assign(mfa_message: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠬᠠᠭᠠᠭᠳᠠᠪᠠ᠃")}
+  end
+
+  defp qr_data_uri(uri) when is_binary(uri) do
+    png =
+      uri
+      |> EQRCode.encode()
+      |> EQRCode.png(width: 240)
+
+    "data:image/png;base64," <> Base.encode64(png)
   end
 
   @impl true
@@ -111,7 +123,10 @@ defmodule MglIdWeb.Account.SecurityLive do
         <% else %>
           <button phx-click="mfa_setup" class="mn-text btn btn-primary">ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠬᠤ</button>
           <%= if @mfa_uri do %>
-            <%!-- Keep otpauth URI readable for copy/paste --%>
+            <div class="mn-qr">
+              <img src={@mfa_qr} width="240" height="240" alt="MFA QR" />
+            </div>
+            <%!-- Keep otpauth URI readable for copy/paste fallback --%>
             <p class="mn-p mn-sideways">{@mfa_uri}</p>
             <form phx-submit="mfa_confirm" class="mn-form">
               <label class="mn-field">
