@@ -18,7 +18,7 @@ defmodule MglIdWeb.Account.PrivacyLive do
     {:noreply,
      socket
      |> assign(current_user: user)
-     |> assign(message: "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠭᠳᠡᠪᠡ᠃")}
+     |> assign(message: "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠭᠳᠡᠪᠡ᠃")}
   end
 
   @impl true
@@ -28,15 +28,15 @@ defmodule MglIdWeb.Account.PrivacyLive do
       <article class="mn-doc">
         <.mn_page_head kicker="Account" title="ᠨᠢᠭᠤᠴᠠᠯᠠᠯ">
           <p class="mn-lead mn-text">
-            ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ᠃ ᠡᠨᠡ ᠨᠢ ᠳᠠᠷᠤᠢ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠦᠭᠡᠢ ᠪᠥᠭᠡᠳ ᠰᠢᠯᠭᠠᠬᠤ ᠶᠠᠪᠤᠴᠠ ᠡᠬᠢᠯᠡᠭᠦᠯᠦᠨ᠎ᠡ᠃
+            ᠪᠦᠷᠢᠳᠬᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ᠃ ᠢᠩᠭᠢᠭᠰᠡᠨ᠎ᠢᠶᠡᠷ ᠳᠠᠩᠰᠠ ᠰᠢᠭᠤᠳ ᠤᠰᠠᠳᠬᠠᠭᠳᠠᠬᠤ᠎ᠦᠭᠡᠢ ᠬᠠᠷᠢᠨ ᠤᠷᠢᠳᠠᠪᠡᠷ  ᠬᠢᠨᠠᠨ ᠰᠢᠯᠭᠠᠬᠤ ᠦᠢᠯᠡ ᠶᠠᠪᠤᠴᠠ ᠡᠬᠢᠯᠡᠬᠦ ᠪᠣᠯᠤᠨ᠎ᠠ᠃
           </p>
         </.mn_page_head>
         <button
           phx-click="delete"
-          data-confirm="ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ ᠦᠦ?"
+          data-confirm="ᠪᠦᠷᠢᠳᠬᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ ᠬᠦᠰᠡᠯᠲᠡ ᠢᠯᠡᠭᠡᠬᠦ ᠦᠦ？"
           class="mn-text btn btn-ghost"
         >
-          ᠪᠦᠷᠲᠦᠭᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ
+          ᠪᠦᠷᠢᠳᠬᠡᠯ ᠤᠰᠠᠳᠬᠠᠬᠤ
         </button>
         <%= if @message do %>
           <p class="mn-p mn-text">{@message}</p>

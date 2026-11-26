@@ -14,7 +14,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
     else
       {:ok,
        socket
-       |> assign(page_title: "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ")
+       |> assign(page_title: "ᠪᠦᠷᠢᠳᠬᠡᠯ᠎ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ")
        |> assign(reviews: Registrations.list_pending())}
     end
   end

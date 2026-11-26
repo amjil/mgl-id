@@ -18,23 +18,23 @@ defmodule MglIdWeb.RegistrationController do
           {:ok, _user, _session, token} ->
             conn
             |> UserAuth.log_in_user(token)
-            |> put_flash(:info, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠭᠡᠭᠳᠡᠪᠡ")
+            |> put_flash(:info, "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠡᠭᠦᠰᠭᠡᠭᠳᠡᠪᠡ")
             |> redirect(to: ~p"/account")
 
           {:error, _} ->
             conn
-            |> put_flash(:info, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠭᠡᠭᠳᠡᠪᠡ᠂ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠢᠨ᠎ᠠ")
+            |> put_flash(:info, "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠡᠭᠦᠰᠭᠡᠭᠳᠡᠪᠡ᠂ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠬᠦᠯᠢᠶᠡᠵᠦ ᠪᠠᠢᠨ᠎ᠠ")
             |> redirect(to: ~p"/login")
         end
 
       {:error, :username_already_exists} ->
         conn
-        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠦᠷᠢᠳᠬᠡᠭᠳᠡᠭᠰᠡᠨ ᠪᠠᠢᠨ᠎ᠠ")
+        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠦᠷᠢᠳᠬᠡᠭᠳᠡᠭᠰᠡᠨ ᠪᠠᠢᠨ᠎ᠠ")
         |> redirect(to: ~p"/register")
 
       {:error, :invalid_username} ->
         conn
-        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠷᠤᠤ")
+        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠷᠤᠤ")
         |> redirect(to: ~p"/register")
 
       {:error, :invalid_password} ->

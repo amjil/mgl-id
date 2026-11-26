@@ -55,7 +55,7 @@ defmodule MglIdWeb.Oauth.ConsentHTML do
 
   embed_templates "consent_html/*"
 
-  def scope_label("openid"), do: "ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠪᠠᠲᠤᠮᠵᠢ"
+  def scope_label("openid"), do: "ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠪᠠᠲᠤᠯᠠᠮᠵᠢ"
   def scope_label("profile"), do: "ᠨᠡᠢᠲᠡ ᠮᠡᠳᠡᠭᠡᠯᠡᠯ ᠢ ᠦᠵᠡᠬᠦ"
   def scope_label("email"), do: "ᠢᠮᠡᠯ ᠬᠠᠶᠢᠭ ᠢ ᠦᠵᠡᠬᠦ"
   def scope_label("offline_access"), do: "ᠳᠠᠬᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠡᠷᠬᠡ"

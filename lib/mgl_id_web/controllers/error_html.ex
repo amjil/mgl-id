@@ -12,7 +12,7 @@ defmodule MglIdWeb.ErrorHTML do
     |> Map.merge(%{
       status_code: "404",
       heading: "ᠬᠤᠤᠳᠠᠰᠤ ᠣᠯᠳᠠᠭᠰᠠᠨ ᠦᠭᠡᠢ",
-      description: "ᠲᠠᠨ ᠤ ᠬᠠᠢᠵᠤ ᠪᠤᠢ ᠬᠤᠤᠳᠠᠰᠤ ᠪᠠᠢᠬᠤ ᠦᠭᠡᠢ ᠪᠤᠶᠤ ᠰᠢᠯᠵᠢᠭᠦᠯᠦᠭᠳᠡᠭᠰᠡᠨ ᠪᠠᠢᠨ᠎ᠠ᠃",
+      description: "ᠲᠠᠨ᠎ᠤ ᠬᠠᠢᠵᠤ ᠪᠤᠢ ᠬᠤᠤᠳᠠᠰᠤ ᠪᠠᠢᠬᠤ ᠦᠭᠡᠢ ᠪᠤᠶᠤ ᠰᠢᠯᠵᠢᠭᠦᠯᠦᠭᠳᠡᠭᠰᠡᠨ ᠪᠠᠢᠨ᠎ᠠ᠃",
       latin_description?: false
     })
     |> error_page()
@@ -84,7 +84,7 @@ defmodule MglIdWeb.ErrorHTML do
             </.mn_page_head>
             <%!-- Use mn-actions so vertical buttons flow left -> right --%>
             <div class="mn-actions">
-              <a href={~p"/"} class="mn-text btn btn-primary">ᠭᠡᠷ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a>
+              <a href={~p"/"} class="mn-text btn btn-primary">ᠨᠢᠭᠤᠷ ᠬᠠᠭᠤᠳᠠᠰᠤ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a>
               <a href={~p"/login"} class="mn-text btn btn-ghost">ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>
             </div>
           </article>

@@ -33,7 +33,7 @@ defmodule MglIdWeb.Account.SessionsLive do
       <article class="mn-doc">
         <.mn_page_head kicker="Account" title="ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ" />
         <button phx-click="revoke_all" class="mn-text btn btn-ghost">
-          ᠪᠤᠰᠤᠳ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
+          ᠪᠤᠰᠤᠳ ᠨᠠᠪᠲᠠᠷᠠᠯᠲᠠ᠎ᠶᠢ ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ
         </button>
         <div class="mn-columns" style="gap: 1rem;">
           <%= for s <- @sessions do %>
@@ -45,10 +45,10 @@ defmodule MglIdWeb.Account.SessionsLive do
                 <span class="mn-sideways">IP</span>: <span class="mn-sideways">{s.ip_address}</span>
               </p>
               <p class="mn-p mn-text">
-                ᠰᠡᠭᠦᠯᠴᠢ ᠶᠢᠨ ᠢᠳᠡᠪᠬᠢ: <span class="mn-sideways">{format_time(s.last_active_at)}</span>
+                ᠰᠡᠭᠦᠯᠴᠢ᠎ᠶᠢᠨ ᠢᠳᠡᠪᠬᠢ: <span class="mn-sideways">{format_time(s.last_active_at)}</span>
               </p>
               <%= if @current_session && s.id == @current_session.id do %>
-                <p class="mn-p mn-text">ᠣᠳᠤ ᠶᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ</p>
+                <p class="mn-p mn-text">ᠣᠳᠣ᠎ᠶᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ</p>
               <% else %>
                 <button phx-click="revoke" phx-value-id={s.id} class="mn-text btn">
                   ᠬᠦᠴᠦᠨ ᠦᠭᠡᠢ ᠪᠣᠯᠭᠠᠬᠤ

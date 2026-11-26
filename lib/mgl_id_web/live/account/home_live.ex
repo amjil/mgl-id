@@ -6,7 +6,7 @@ defmodule MglIdWeb.Account.HomeLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "ᠪᠦᠷᠲᠦᠭᠡᠯ")}
+    {:ok, assign(socket, page_title: "ᠪᠦᠷᠢᠳᠬᠡᠯ")}
   end
 
   @impl true
@@ -14,8 +14,8 @@ defmodule MglIdWeb.Account.HomeLive do
     ~H"""
     <.account_shell current_user={@current_user} active="home" flash={@flash}>
       <article class="mn-doc">
-        <.mn_page_head kicker="Account" title="ᠪᠦᠷᠲᠦᠭᠡᠯ">
-          <p class="mn-lead mn-text">ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠦᠨ ᠲᠣᠪᠴᠢ</p>
+        <.mn_page_head kicker="Account" title="ᠪᠦᠷᠢᠳᠬᠡᠯ">
+          <p class="mn-lead mn-text">ᠲᠠᠨ᠎ᠤ ᠪᠦᠷᠢᠳᠬᠡᠯ᠎ᠦᠨ ᠲᠣᠪᠴᠢ</p>
         </.mn_page_head>
         <div class="mn-callout mn-callout--profile">
           <div class="mn-kv">
@@ -28,7 +28,7 @@ defmodule MglIdWeb.Account.HomeLive do
               <span class="mn-text">{@current_user.display_name}</span>
             </p>
             <p class="mn-kv-row">
-              <span class="mn-kv-key mn-text">ᠪᠠᠶᠢᠳᠠᠯ</span>
+              <span class="mn-kv-key mn-text">ᠪᠠᠢᠳᠠᠯ</span>
               <span class={["mn-sideways mn-badge", status_badge_class(@current_user.status)]}>
                 {@current_user.status}
               </span>

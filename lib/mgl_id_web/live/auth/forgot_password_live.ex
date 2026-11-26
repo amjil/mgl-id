@@ -22,22 +22,22 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
     ~H"""
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
-        <.mn_page_head kicker="Mgl ID" title="ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?" />
+        <.mn_page_head kicker="Mgl ID" title="ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠠ ᠤᠤ？" />
         <%= if @sent do %>
           <p class="mn-p mn-text">
-            ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠪᠤᠯ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ ᠢᠮᠡᠯ ᠢᠯᠡᠭᠡᠪᠡ᠃
+            ᠪᠦᠷᠢᠳᠬᠡᠯ ᠪᠤᠢ ᠪᠤᠯ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ ᠢᠮᠡᠯ ᠢᠯᠡᠭᠡᠪᠡ᠃
           </p>
         <% else %>
           <form phx-submit="submit" class="mn-form">
             <label class="mn-field">
-              <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
+              <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
               <input class="mn-input mn-input-latin" type="text" name="username" required />
             </label>
             <button type="submit" class="mn-text btn btn-primary">ᠢᠯᠡᠭᠡᠬᠦ</button>
           </form>
         <% end %>
         <p class="mn-p mn-text">
-          <.link navigate={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠷᠤᠤ ᠪᠤᠴᠠᠬᠤ</.link>
+          <.link navigate={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠨᠢᠭᠤᠷ᠎ᠲᠤ ᠪᠤᠴᠠᠬᠤ</.link>
         </p>
       </article>
     </.mn_shell>

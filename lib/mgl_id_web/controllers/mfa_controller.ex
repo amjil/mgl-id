@@ -14,11 +14,11 @@ defmodule MglIdWeb.MfaController do
 
       not Mfa.enabled?(user) ->
         conn
-        |> put_flash(:error, "ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠤᠭᠠᠷᠠᠢ")
+        |> put_flash(:error, "ᠤᠳᠤᠷᠢᠳᠤᠯᠭ᠎ᠠ ᠬᠡᠷᠡᠭᠯᠡᠬᠦ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠯᠠᠮᠵᠢ ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠤᠭᠠᠷᠠᠢ")
         |> redirect(to: ~p"/account/security")
 
       true ->
-        render(conn, :new, page_title: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ")
+        render(conn, :new, page_title: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠯᠠᠮᠵᠢ")
     end
   end
 
@@ -36,7 +36,7 @@ defmodule MglIdWeb.MfaController do
 
       {:error, _} ->
         conn
-        |> put_flash(:error, "ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ ᠪᠤᠷᠤᠤ")
+        |> put_flash(:error, "ᠪᠠᠲᠤᠯᠠᠮᠵᠢ᠎ᠶᠢᠨ ᠺᠣᠳ᠋ ᠪᠤᠷᠤᠤ")
         |> redirect(to: ~p"/mfa")
     end
   end

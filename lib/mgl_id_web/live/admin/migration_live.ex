@@ -17,7 +17,7 @@ defmodule MglIdWeb.Admin.MigrationLive do
     ~H"""
     <.admin_shell active="migration" flash={@flash}>
       <article class="mn-doc">
-        <.mn_page_head kicker="Admin" title="ᠪᠦᠷᠲᠦᠭᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ">
+        <.mn_page_head kicker="Admin" title="ᠪᠦᠷᠢᠳᠬᠡᠯ ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ">
           <p class="mn-lead mn-text">
             ᠵᠥᠪᠬᠡᠨ ᠬᠣᠯᠪᠤᠬᠤ ᠭᠣᠷᠢᠮ᠃ ᠬᠠᠭᠤᠴᠢᠨ ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠨᠢ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠬᠠᠭᠠᠬᠤ ᠬᠦᠷᠲᠡᠯ᠎ᠡ ᠠᠵᠢᠯᠯᠠᠨ᠎ᠠ᠃
           </p>

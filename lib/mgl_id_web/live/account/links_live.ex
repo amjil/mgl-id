@@ -55,7 +55,7 @@ defmodule MglIdWeb.Account.LinksLive do
         %{id: p, name: Map.get(cfg, :name, p), linked?: MapSet.member?(linked_providers, p)}
       end)
 
-    assign(socket, page_title: "ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ", links: links, providers: providers)
+    assign(socket, page_title: "ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠢᠳᠬᠡᠯ", links: links, providers: providers)
   end
 
   @impl true
@@ -63,9 +63,9 @@ defmodule MglIdWeb.Account.LinksLive do
     ~H"""
     <.account_shell current_user={@current_user} active="links" flash={@flash}>
       <article class="mn-doc">
-        <.mn_page_head kicker="Account" title="ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠲᠦᠭᠡᠯ">
+        <.mn_page_head kicker="Account" title="ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠪᠦᠷᠢᠳᠬᠡᠯ">
           <p class="mn-lead mn-text">
-            ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ ᠦ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
+            ᠬᠣᠯᠪᠤᠬᠤ ᠡᠴᠡ ᠡᠮᠦᠨ᠎ᠡ ᠲᠤᠰ ᠬᠡᠷᠡᠭᠯᠡᠭᠡᠨ᠎ᠦ ᠪᠦᠷᠢᠳᠬᠡᠯ᠎ᠢ ᠪᠠᠲᠤᠯᠠᠨ᠎ᠠ᠃
           </p>
         </.mn_page_head>
 

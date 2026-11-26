@@ -22,17 +22,17 @@ defmodule MglIdWeb.SessionController do
 
       {:error, :account_suspended} ->
         conn
-        |> put_flash(:error, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠲᠦᠷ ᠵᠣᠭᠰᠤᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
+        |> put_flash(:error, "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠲᠦᠷ ᠵᠣᠭᠰᠤᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
         |> redirect(to: ~p"/login")
 
       {:error, :account_disabled} ->
         conn
-        |> put_flash(:error, "ᠪᠦᠷᠲᠦᠭᠡᠯ ᠬᠠᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
+        |> put_flash(:error, "ᠪᠦᠷᠢᠳᠬᠡᠯ ᠬᠠᠭᠠᠭᠳᠠᠭᠰᠠᠨ ᠪᠠᠢᠨ᠎ᠠ")
         |> redirect(to: ~p"/login")
 
       {:error, _} ->
         conn
-        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠶᠤ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠤᠷᠤᠤ")
+        |> put_flash(:error, "ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ ᠪᠤᠶᠤ ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠤᠷᠤᠤ")
         |> redirect(to: ~p"/login")
     end
   end

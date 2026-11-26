@@ -22,7 +22,7 @@ defmodule MglIdWeb.AccountComponents do
           class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"}
           navigate={~p"/account"}
         >
-          ᠭᠡᠷ
+          ᠨᠢᠭᠤᠷ ᠬᠠᠭᠤᠳᠠᠰᠤ
         </.link>
         <.link
           class={"mn-rail-link mn-text #{if @active == "profile", do: "font-bold"}"}
@@ -34,7 +34,7 @@ defmodule MglIdWeb.AccountComponents do
           class={"mn-rail-link mn-text #{if @active == "security", do: "font-bold"}"}
           navigate={~p"/account/security"}
         >
-          ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ
+          ᠠᠶᠤᠯ ᠦᠭᠡᠢ ᠪᠠᠢᠳᠠᠯ
         </.link>
         <.link
           class={"mn-rail-link mn-text #{if @active == "sessions", do: "font-bold"}"}
@@ -62,7 +62,7 @@ defmodule MglIdWeb.AccountComponents do
         </.link>
 
         <%= if @current_user.is_admin do %>
-          <a class="mn-rail-link mn-text" href={~p"/admin"}>ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</a>
+          <a class="mn-rail-link mn-text" href={~p"/admin"}>ᠤᠳᠤᠷᠢᠳᠤᠯᠭ᠎ᠠ</a>
         <% end %>
         <form action={~p"/logout"} method="post" class="mn-rail-logout">
           <input type="hidden" name="_method" value="delete" />

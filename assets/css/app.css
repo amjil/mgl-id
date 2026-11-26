@@ -745,7 +745,7 @@ body {
   writing-mode: vertical-lr;
   -webkit-writing-mode: vertical-lr;
   text-orientation: sideways;
-  font-family: var(--mn-font-ui);
+  font-family: var(--mn-font-script);
   font-size: 0.9em;
   letter-spacing: 0.02em;
   overflow-wrap: anywhere;

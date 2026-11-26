@@ -66,7 +66,7 @@ defmodule MglIdWeb.Account.ProfileLive do
             />
           </label>
           <label class="mn-field">
-            <span class="mn-text">ᠴᠠᠭ ᠤᠨ ᠪᠦᠰᠡ</span>
+            <span class="mn-text">ᠴᠠᠭ᠎ᠤᠨ ᠪᠥᠰᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="text"

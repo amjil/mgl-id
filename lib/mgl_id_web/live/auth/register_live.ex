@@ -15,14 +15,14 @@ defmodule MglIdWeb.Auth.RegisterLive do
       <article class="mn-doc">
         <.mn_page_head kicker="Mgl ID" title="ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ">
           <p class="mn-lead mn-text">
-            ᠮᠢᠨᠤ <span class="mn-sideways">Mgl ID</span> ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ
+            ᠮᠢᠨᠤ <span class="mn-sideways">Mgl ID</span> ᠪᠦᠷᠢᠳᠬᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ
           </p>
         </.mn_page_head>
 
         <form action={~p"/register"} method="post" class="mn-form">
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
           <label class="mn-field">
-            <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
+            <span class="mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠎ᠶᠢᠨ ᠨᠡᠷ᠎ᠡ</span>
             <input
               class="mn-input mn-input-latin"
               type="text"
@@ -54,7 +54,7 @@ defmodule MglIdWeb.Auth.RegisterLive do
         </form>
 
         <p class="mn-p mn-text">
-          <.link navigate={~p"/login"}>ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠤᠤ? ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</.link>
+          <.link navigate={~p"/login"}>ᠪᠦᠷᠢᠳᠬᠡᠯ ᠪᠤᠢ ᠤᠤ？ ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</.link>
         </p>
       </article>
     </.mn_shell>

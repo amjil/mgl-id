@@ -80,7 +80,7 @@ defmodule MglIdWeb.Oauth.AuthorizeController do
                 <h1 class="mn-h1 mn-text">ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠯ ᠦᠨ ᠠᠯᠳᠠᠭ᠎ᠠ</h1>
                 <p class="mn-p mn-sideways">#{esc.(error)}</p>
                 <p class="mn-p mn-sideways">#{esc.(error_description)}</p>
-                <p class="mn-p mn-text"><a href="#{~p"/"}">ᠭᠡᠷ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a></p>
+                <p class="mn-p mn-text"><a href="#{~p"/"}">ᠨᠢᠭᠤᠷ ᠬᠠᠭᠤᠳᠠᠰᠤ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a></p>
               </article>
             </div>
           </main>
