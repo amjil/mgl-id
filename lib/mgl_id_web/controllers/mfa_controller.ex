@@ -18,7 +18,7 @@ defmodule MglIdWeb.MfaController do
         |> redirect(to: ~p"/account/security")
 
       true ->
-        render(conn, :new)
+        render(conn, :new, page_title: "ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ")
     end
   end
 

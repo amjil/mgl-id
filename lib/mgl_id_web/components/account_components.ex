@@ -18,48 +18,48 @@ defmodule MglIdWeb.AccountComponents do
     ~H"""
     <.mn_shell title="Mgl ID" flash={@flash}>
       <:rail>
-        <a
+        <.link
           class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"}
-          href={~p"/account"}
+          navigate={~p"/account"}
         >
           ᠭᠡᠷ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "profile", do: "font-bold"}"}
-          href={~p"/account/profile"}
+          navigate={~p"/account/profile"}
         >
           ᠮᠡᠳᠡᠭᠡᠯᠡᠯ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "security", do: "font-bold"}"}
-          href={~p"/account/security"}
+          navigate={~p"/account/security"}
         >
           ᠠᠮᠤᠷ ᠲᠠᠤᠯᠠᠢ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "sessions", do: "font-bold"}"}
-          href={~p"/account/sessions"}
+          navigate={~p"/account/sessions"}
         >
           ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "applications", do: "font-bold"}"}
-          href={~p"/account/applications"}
+          navigate={~p"/account/applications"}
         >
           ᠬᠡᠷᠡᠭᠯᠡᠭᠡ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "links", do: "font-bold"}"}
-          href={~p"/account/links"}
+          navigate={~p"/account/links"}
         >
           ᠬᠣᠯᠪᠤᠭ᠎ᠠ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "privacy", do: "font-bold"}"}
-          href={~p"/account/privacy"}
+          navigate={~p"/account/privacy"}
         >
           ᠨᠢᠭᠤᠴᠠᠯᠠᠯ
-        </a>
+        </.link>
 
         <%= if @current_user.is_admin do %>
           <a class="mn-rail-link mn-text" href={~p"/admin"}>ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</a>

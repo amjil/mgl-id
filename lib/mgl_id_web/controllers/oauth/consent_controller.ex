@@ -12,6 +12,7 @@ defmodule MglIdWeb.Oauth.ConsentController do
     client = safe_get_client(client_id)
 
     render(conn, :new,
+      page_title: "ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ",
       client: client,
       client_id: client_id,
       scope: scope,

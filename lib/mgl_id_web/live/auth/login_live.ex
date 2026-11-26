@@ -42,8 +42,8 @@ defmodule MglIdWeb.Auth.LoginLive do
         </form>
 
         <p class="mn-p mn-text">
-          <a href={~p"/register"}>ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</a>
-          · <a href={~p"/password/forgot"}>ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?</a>
+          <.link navigate={~p"/register"}>ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</.link>
+          · <.link navigate={~p"/password/forgot"}>ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?</.link>
         </p>
       </article>
     </.mn_shell>

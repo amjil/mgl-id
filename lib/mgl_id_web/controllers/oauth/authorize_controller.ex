@@ -62,13 +62,14 @@ defmodule MglIdWeb.Oauth.AuthorizeController do
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <link rel="stylesheet" href="/assets/css/app.css" />
+        <link rel="preload" href="#{~p"/fonts/OyunQaganTig.ttf"}" as="font" type="font/ttf" crossorigin />
+        <link rel="stylesheet" href="#{~p"/assets/css/app.css"}" />
         <title>Mgl ID</title>
       </head>
       <body>
         <div class="mn-shell mn-shell--standalone">
           <aside class="mn-rail">
-            <a class="mn-brand" href="/">
+            <a class="mn-brand" href="#{~p"/"}">
               <span class="mn-brand-seal" aria-hidden="true">ᠮ</span>
               <span class="mn-brand-name">Mgl ID</span>
             </a>
@@ -79,7 +80,7 @@ defmodule MglIdWeb.Oauth.AuthorizeController do
                 <h1 class="mn-h1 mn-text">ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠯ ᠦᠨ ᠠᠯᠳᠠᠭ᠎ᠠ</h1>
                 <p class="mn-p mn-sideways">#{esc.(error)}</p>
                 <p class="mn-p mn-sideways">#{esc.(error_description)}</p>
-                <p class="mn-p mn-text"><a href="/">ᠭᠡᠷ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a></p>
+                <p class="mn-p mn-text"><a href="#{~p"/"}">ᠭᠡᠷ ᠲᠦ ᠪᠤᠴᠠᠬᠤ</a></p>
               </article>
             </div>
           </main>

@@ -56,7 +56,7 @@ defmodule MglId.Authentication do
             username: username,
             username_normalized: normalized,
             display_name:
-              Map.get(attrs, "display_name") || Map.get(attrs, :display_name) || username,
+              present_or(Map.get(attrs, "display_name") || Map.get(attrs, :display_name), username),
             status: status,
             review_status: review_status,
             registration_source: Map.get(meta, :source, "web"),
@@ -383,4 +383,13 @@ defmodule MglId.Authentication do
   defp maybe_check_email_taken(email) do
     if Contacts.email_taken?(email), do: {:error, :email_taken}, else: :ok
   end
+
+  defp present_or(value, fallback) when is_binary(value) do
+    case String.trim(value) do
+      "" -> fallback
+      trimmed -> trimmed
+    end
+  end
+
+  defp present_or(_, fallback), do: fallback
 end

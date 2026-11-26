@@ -17,33 +17,36 @@ defmodule MglIdWeb.AdminComponents do
     ~H"""
     <.mn_shell title="Mgl ID" subtitle="ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ" flash={@flash}>
       <:rail>
-        <a class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"} href={~p"/admin"}>
+        <.link
+          class={"mn-rail-link mn-text #{if @active == "home", do: "font-bold"}"}
+          navigate={~p"/admin"}
+        >
           ᠬᠢᠨᠠᠯᠲᠠ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "users", do: "font-bold"}"}
-          href={~p"/admin/users"}
+          navigate={~p"/admin/users"}
         >
           ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "registrations", do: "font-bold"}"}
-          href={~p"/admin/registrations"}
+          navigate={~p"/admin/registrations"}
         >
           ᠰᠢᠯᠭᠠᠯᠲᠠ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "clients", do: "font-bold"}"}
-          href={~p"/admin/clients"}
+          navigate={~p"/admin/clients"}
         >
           ᠬᠡᠷᠡᠭᠯᠡᠭᠡ
-        </a>
-        <a
+        </.link>
+        <.link
           class={"mn-rail-link mn-text #{if @active == "migration", do: "font-bold"}"}
-          href={~p"/admin/migration"}
+          navigate={~p"/admin/migration"}
         >
           ᠰᠢᠯᠵᠢᠭᠦᠯᠭᠡ
-        </a>
+        </.link>
         <a class="mn-rail-link mn-text" href={~p"/account"}>ᠪᠦᠷᠲᠦᠭᠡᠯ</a>
       </:rail>
       {render_slot(@inner_block)}

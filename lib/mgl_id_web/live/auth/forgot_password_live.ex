@@ -36,7 +36,9 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
             <button type="submit" class="mn-text btn btn-primary">ᠢᠯᠡᠭᠡᠬᠦ</button>
           </form>
         <% end %>
-        <p class="mn-p mn-text"><a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠷᠤᠤ ᠪᠤᠴᠠᠬᠤ</a></p>
+        <p class="mn-p mn-text">
+          <.link navigate={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ ᠷᠤᠤ ᠪᠤᠴᠠᠬᠤ</.link>
+        </p>
       </article>
     </.mn_shell>
     """

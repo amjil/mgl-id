@@ -78,7 +78,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
         <h2 class="mn-h2 mn-text">ᠨᠡᠪᠲᠡᠷᠡᠯᠲᠡ ᠶᠢᠨ ᠲᠡᠮᠳᠡᠭᠯᠡᠯ</h2>
         <%= for a <- @attempts do %>
           <p class="mn-p mn-text">
-            <span class="mn-sideways">{a.inserted_at}</span> —
+            <span class="mn-sideways">{format_time(a.inserted_at)}</span> —
             {if a.success, do: "ᠠᠮᠵᠢᠯᠲᠠᠲᠠᠢ", else: "ᠠᠮᠵᠢᠯᠲᠠᠭᠦᠢ"} —
             <span class="mn-sideways">{a.ip_address}</span>
           </p>
@@ -94,4 +94,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
     </.admin_shell>
     """
   end
+
+  defp format_time(%DateTime{} = dt), do: Calendar.strftime(dt, "%Y-%m-%d %H:%M")
+  defp format_time(_), do: "—"
 end
