@@ -112,7 +112,7 @@ defmodule MglIdWeb.Account.SecurityLive do
           <button phx-click="mfa_setup" class="mn-text btn btn-primary">ᠲᠣᠬᠢᠷᠠᠭᠤᠯᠬᠤ</button>
           <%= if @mfa_uri do %>
             <%!-- Keep otpauth URI readable for copy/paste --%>
-            <p class="mn-p mn-latin" style="word-break: break-all;">{@mfa_uri}</p>
+            <p class="mn-p mn-sideways">{@mfa_uri}</p>
             <form phx-submit="mfa_confirm" class="mn-form">
               <label class="mn-field">
                 <span class="mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠺᠣᠳ</span>

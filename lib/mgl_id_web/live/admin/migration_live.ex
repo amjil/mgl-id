@@ -22,16 +22,16 @@ defmodule MglIdWeb.Admin.MigrationLive do
         </p>
         <div class="mn-columns" style="gap: 0.85rem;">
           <p class="mn-p mn-text">
-            ᠨᠡᠢᠲᠡ ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-upright">{@stats.linked_total}</span>
+            ᠨᠡᠢᠲᠡ ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-sideways">{@stats.linked_total}</span>
           </p>
           <p class="mn-p mn-text">
-            ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ: <span class="mn-upright">{@stats.pending_initiations}</span>
+            ᠬᠦᠯᠢᠶᠡᠭᠳᠡᠵᠦ ᠪᠤᠢ: <span class="mn-sideways">{@stats.pending_initiations}</span>
           </p>
           <%= for provider <- @stats.providers do %>
             <p class="mn-p mn-text">
-              <span class="mn-upright">{String.capitalize(provider)}</span> —
-              ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-upright">{Map.get(@stats.linked_by_provider, provider, 0)}</span> ·
-              ᠰᠠᠯᠭᠠᠭᠰᠠᠨ: <span class="mn-upright">{Map.get(@stats.unlinked_by_provider, provider, 0)}</span>
+              <span class="mn-sideways">{String.capitalize(provider)}</span> —
+              ᠬᠣᠯᠪᠤᠭᠰᠠᠨ: <span class="mn-sideways">{Map.get(@stats.linked_by_provider, provider, 0)}</span> ·
+              ᠰᠠᠯᠭᠠᠭᠰᠠᠨ: <span class="mn-sideways">{Map.get(@stats.unlinked_by_provider, provider, 0)}</span>
             </p>
           <% end %>
         </div>

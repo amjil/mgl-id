@@ -47,18 +47,18 @@ defmodule MglIdWeb.Admin.UserShowLive do
     ~H"""
     <.admin_shell active="users" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-upright">{@user.username}</h1>
+        <h1 class="mn-h1 mn-sideways">{@user.username}</h1>
         <p class="mn-p mn-text">
-          <span class="mn-upright">ID</span>: <span class="mn-sideways">{@user.id}</span>
+          <span class="mn-sideways">ID</span>: <span class="mn-sideways">{@user.id}</span>
         </p>
         <p class="mn-p mn-text">
-          ᠪᠠᠶᠢᠳᠠᠯ: <span class="mn-upright">{@user.status}</span>
+          ᠪᠠᠶᠢᠳᠠᠯ: <span class="mn-sideways">{@user.status}</span>
         </p>
         <p class="mn-p mn-text">
-          ᠰᠢᠯᠭᠠᠯᠲᠠ: <span class="mn-upright">{@user.review_status}</span>
+          ᠰᠢᠯᠭᠠᠯᠲᠠ: <span class="mn-sideways">{@user.review_status}</span>
         </p>
         <p class="mn-p mn-text">
-          ᠢᠲᠡᠭᠡᠯ ᠦᠨ ᠲᠦᠪᠰᠢᠨ: <span class="mn-upright">{@user.trust_level}</span>
+          ᠢᠲᠡᠭᠡᠯ ᠦᠨ ᠲᠦᠪᠰᠢᠨ: <span class="mn-sideways">{@user.trust_level}</span>
         </p>
 
         <div class="mn-actions">
@@ -88,7 +88,7 @@ defmodule MglIdWeb.Admin.UserShowLive do
 
         <h2 class="mn-h2 mn-text">ᠬᠣᠯᠪᠤᠭᠰᠠᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h2>
         <%= for app <- @apps do %>
-          <p class="mn-p mn-upright">{(app.client && app.client.name) || app.client_id}</p>
+          <p class="mn-p mn-sideways">{(app.client && app.client.name) || app.client_id}</p>
         <% end %>
       </article>
     </.admin_shell>

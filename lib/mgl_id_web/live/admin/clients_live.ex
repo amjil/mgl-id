@@ -76,7 +76,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
     ~H"""
     <.admin_shell active="clients" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text"><span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
+        <h1 class="mn-h1 mn-text"><span class="mn-sideways">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ</h1>
 
         <form phx-submit="create" class="mn-form">
           <label class="mn-field">
@@ -84,7 +84,7 @@ defmodule MglIdWeb.Admin.ClientsLive do
             <input class="mn-input mn-input-latin" name="name" required />
           </label>
           <label class="mn-field">
-            <span class="mn-text">ᠪᠤᠴᠠᠬᠤ ᠬᠠᠶᠢᠭ <span class="mn-upright">(,)</span></span>
+            <span class="mn-text">ᠪᠤᠴᠠᠬᠤ ᠬᠠᠶᠢᠭ <span class="mn-sideways">(,)</span></span>
             <input
               class="mn-input mn-input-latin"
               name="redirect_uris"
@@ -101,9 +101,9 @@ defmodule MglIdWeb.Admin.ClientsLive do
 
         <%= if @created do %>
           <%!-- Keep credentials horizontal for easy copy/paste --%>
-          <div class="mn-callout mn-latin">
-            <p>client_id={@created.id}</p>
-            <p>secret={@created.secret}</p>
+          <div class="mn-callout">
+            <p class="mn-p mn-sideways">client_id={@created.id}</p>
+            <p class="mn-p mn-sideways">secret={@created.secret}</p>
           </div>
         <% end %>
         <%= if @message do %>
@@ -116,11 +116,11 @@ defmodule MglIdWeb.Admin.ClientsLive do
           <%= for c <- @clients do %>
             <div class="mn-callout">
               <p class="mn-p mn-text">
-                <span class="mn-upright">{c.name}</span> — <span class="mn-sideways">{c.id}</span>
+                <span class="mn-sideways">{c.name}</span> — <span class="mn-sideways">{c.id}</span>
               </p>
               <p class="mn-p mn-text">
-                <span class="mn-upright">PKCE: {inspect(c.pkce)}</span> ·
-                <span class="mn-upright">confidential: {inspect(c.confidential)}</span>
+                <span class="mn-sideways">PKCE: {inspect(c.pkce)}</span> ·
+                <span class="mn-sideways">confidential: {inspect(c.confidential)}</span>
               </p>
               <button phx-click="rotate" phx-value-id={c.id} class="mn-text btn">
                 ᠨᠢᠭᠤᠴᠠ ᠲᠦᠯᠬᠢᠭᠦᠷ ᠰᠣᠯᠢᠬᠤ

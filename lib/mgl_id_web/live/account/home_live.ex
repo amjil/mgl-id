@@ -18,7 +18,7 @@ defmodule MglIdWeb.Account.HomeLive do
           <div class="mn-kv">
             <p class="mn-kv-row">
               <span class="mn-kv-key mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ</span>
-              <span class="mn-upright">{@current_user.username}</span>
+              <span class="mn-sideways">{@current_user.username}</span>
             </p>
             <p class="mn-kv-row">
               <span class="mn-kv-key mn-text">ᠨᠡᠷ᠎ᠡ</span>
@@ -26,7 +26,7 @@ defmodule MglIdWeb.Account.HomeLive do
             </p>
             <p class="mn-kv-row">
               <span class="mn-kv-key mn-text">ᠪᠠᠶᠢᠳᠠᠯ</span>
-              <span class={["mn-upright mn-badge", status_badge_class(@current_user.status)]}>
+              <span class={["mn-sideways mn-badge", status_badge_class(@current_user.status)]}>
                 {@current_user.status}
               </span>
             </p>

@@ -15,7 +15,7 @@ defmodule MglIdWeb.Admin.HomeLive do
       <article class="mn-doc">
         <h1 class="mn-h1 mn-text">ᠤᠳᠢᠷᠳᠤᠯᠭ᠎ᠠ</h1>
         <p class="mn-lead mn-text">
-          ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠂ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠪᠠ <span class="mn-upright">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠶᠢ ᠤᠳᠢᠷᠳᠤᠬᠤ᠃
+          ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ᠂ ᠪᠦᠷᠢᠳᠬᠡᠯ ᠦᠨ ᠰᠢᠯᠭᠠᠯᠲᠠ ᠪᠠ <span class="mn-sideways">OAuth</span> ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠶᠢ ᠤᠳᠢᠷᠳᠤᠬᠤ᠃
         </p>
       </article>
     </.admin_shell>

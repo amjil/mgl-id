@@ -70,11 +70,11 @@ defmodule MglIdWeb.Account.LinksLive do
         <div class="mn-columns" style="gap: 1.25rem;">
           <%= for p <- @providers do %>
             <div class="mn-callout">
-              <p class="mn-p mn-upright font-semibold">{p.name}</p>
+              <p class="mn-p mn-sideways font-semibold">{p.name}</p>
               <%= if p.linked? do %>
                 <% link = Enum.find(@links, &(&1.provider == p.id)) %>
                 <p class="mn-p mn-text">
-                  ᠬᠣᠯᠪᠤᠭᠳᠠᠭᠰᠠᠨ · <span class="mn-upright">{link.external_user_id}</span>
+                  ᠬᠣᠯᠪᠤᠭᠳᠠᠭᠰᠠᠨ · <span class="mn-sideways">{link.external_user_id}</span>
                 </p>
                 <form phx-submit="unlink" class="mn-form">
                   <input type="hidden" name="link_id" value={link.id} />

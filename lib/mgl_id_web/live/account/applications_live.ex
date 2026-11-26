@@ -30,7 +30,7 @@ defmodule MglIdWeb.Account.ApplicationsLive do
           <div class="mn-columns" style="gap: 1rem;">
             <%= for app <- @apps do %>
               <div class="mn-callout">
-                <p class="mn-p mn-upright">{(app.client && app.client.name) || app.client_id}</p>
+                <p class="mn-p mn-sideways font-semibold">{(app.client && app.client.name) || app.client_id}</p>
                 <p class="mn-p mn-text">
                   ᠡᠷᠬᠡ: <span class="mn-sideways">{Enum.join(app.scopes, ", ")}</span>
                 </p>

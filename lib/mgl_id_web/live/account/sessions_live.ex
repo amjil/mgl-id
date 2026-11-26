@@ -41,7 +41,7 @@ defmodule MglIdWeb.Account.SessionsLive do
                 ᠲᠥᠬᠥᠭᠡᠷᠦᠮᠵᠢ: <span class="mn-sideways">{s.device_name || "unknown"}</span>
               </p>
               <p class="mn-p mn-text">
-                <span class="mn-upright">IP</span>: <span class="mn-upright">{s.ip_address}</span>
+                <span class="mn-sideways">IP</span>: <span class="mn-sideways">{s.ip_address}</span>
               </p>
               <p class="mn-p mn-text">
                 ᠰᠡᠭᠦᠯᠴᠢ ᠶᠢᠨ ᠢᠳᠡᠪᠬᠢ: <span class="mn-sideways">{s.last_active_at}</span>

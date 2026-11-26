@@ -44,7 +44,7 @@ defmodule MglIdWeb.Admin.RegistrationsLive do
             <%= for review <- @reviews do %>
               <div class="mn-callout">
                 <p class="mn-p mn-text">
-                  <span class="mn-upright">{review.user.username}</span> —
+                  <span class="mn-sideways">{review.user.username}</span> —
                   <span class="mn-sideways">{inspect(review.risk_signals)}</span>
                 </p>
                 <div class="mn-actions">

@@ -78,7 +78,7 @@ defmodule MglIdWeb.ErrorHTML do
         <.mn_shell title="Mgl ID">
           <article class="mn-doc">
             <h1 class="mn-h1 mn-text">
-              <span class="mn-upright">{@status_code}</span> · {@heading}
+              <span class="mn-sideways">{@status_code}</span> · {@heading}
             </h1>
             <p class={["mn-lead", if(@latin_description?, do: "mn-sideways", else: "mn-text")]}>
               {@description}

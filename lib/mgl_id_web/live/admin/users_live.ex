@@ -46,7 +46,7 @@ defmodule MglIdWeb.Admin.UsersLive do
         <div class="mn-columns" style="gap: 0.75rem;">
           <%= for u <- @users do %>
             <a href={~p"/admin/users/#{u.id}"} class="mn-callout mn-text">
-              <span class="mn-upright">{u.username}</span> — <span class="mn-upright">{u.status}</span>
+              <span class="mn-sideways">{u.username}</span> — <span class="mn-sideways">{u.status}</span>
             </a>
           <% end %>
         </div>

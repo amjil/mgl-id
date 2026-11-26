@@ -37,7 +37,7 @@ defmodule MglIdWeb.Auth.RegisterLive do
             <input class="mn-input mn-input-latin" type="email" name="email" autocomplete="email" />
           </label>
           <label class="mn-field">
-            <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ <span class="mn-upright">(≥12)</span></span>
+            <span class="mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ <span class="mn-sideways">(≥12)</span></span>
             <input
               class="mn-input mn-input-latin"
               type="password"
