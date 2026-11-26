@@ -1,10 +1,11 @@
 <.mn_shell title="Mgl ID" flash={@flash}>
   <article class="mn-doc">
-    <h1 class="mn-h1 mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ</h1>
-    <p class="mn-lead mn-text">
-      <strong class="mn-sideways">{(@client && @client.name) || @client_id}</strong>
-      ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠳᠦ ᠬᠦᠷᠲᠡᠯ ᠭᠡᠵᠦ ᠭᠤᠶᠤᠵᠤ ᠪᠠᠢᠨ᠎ᠠ᠃
-    </p>
+    <.mn_page_head kicker="OAuth" title="ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠵᠥᠪᠰᠢᠶᠡᠷᠡᠬᠦ">
+      <p class="mn-lead mn-text">
+        <strong class="mn-sideways">{(@client && @client.name) || @client_id}</strong>
+        ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠳᠦ ᠬᠦᠷᠲᠡᠯ ᠭᠡᠵᠦ ᠭᠤᠶᠤᠵᠤ ᠪᠠᠢᠨ᠎ᠠ᠃
+      </p>
+    </.mn_page_head>
     <ul class="mn-ul mn-text">
       <%= for s <- @scopes do %>
         <li>{scope_label(s)}</li>

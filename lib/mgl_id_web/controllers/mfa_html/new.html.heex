@@ -1,7 +1,8 @@
 <.mn_shell title="Mgl ID" flash={@flash}>
   <article class="mn-doc">
-    <h1 class="mn-h1 mn-text">ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ</h1>
-    <p class="mn-lead mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
+    <.mn_page_head kicker="Mgl ID" title="ᠬᠣᠶᠠᠷ ᠠᠯᠬᠤᠮᠲᠤ ᠪᠠᠲᠤᠮᠵᠢ">
+      <p class="mn-lead mn-text">ᠪᠠᠲᠤᠮᠵᠢ ᠶᠢᠨ ᠬᠡᠷᠡᠭᠯᠡᠭᠡ ᠡᠴᠡ ᠺᠣᠳ ᠢ ᠣᠷᠤᠭᠤᠯ</p>
+    </.mn_page_head>
     <form action={~p"/mfa"} method="post" class="mn-form">
       <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
       <label class="mn-field">

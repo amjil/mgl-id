@@ -22,7 +22,7 @@ defmodule MglIdWeb.Auth.ForgotPasswordLive do
     ~H"""
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?</h1>
+        <.mn_page_head kicker="Mgl ID" title="ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠪᠡᠨ ᠮᠠᠷᠲᠠᠪᠤᠤ?" />
         <%= if @sent do %>
           <p class="mn-p mn-text">
             ᠪᠦᠷᠲᠦᠭᠡᠯ ᠪᠤᠢ ᠪᠤᠯ ᠰᠡᠷᠭᠡᠭᠡᠬᠦ ᠢᠮᠡᠯ ᠢᠯᠡᠭᠡᠪᠡ᠃

@@ -2,6 +2,7 @@ defmodule MglIdWeb.Account.HomeLive do
   use MglIdWeb, :live_view
 
   import MglIdWeb.AccountComponents
+  import MglIdWeb.MnComponents
 
   @impl true
   def mount(_params, _session, socket) do
@@ -13,8 +14,10 @@ defmodule MglIdWeb.Account.HomeLive do
     ~H"""
     <.account_shell current_user={@current_user} active="home" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠪᠦᠷᠲᠦᠭᠡᠯ</h1>
-        <div class="mn-callout">
+        <.mn_page_head kicker="Account" title="ᠪᠦᠷᠲᠦᠭᠡᠯ">
+          <p class="mn-lead mn-text">ᠲᠠᠨ ᠤ ᠪᠦᠷᠲᠦᠭᠡᠯ ᠶᠢᠨ ᠲᠣᠪᠴᠢ</p>
+        </.mn_page_head>
+        <div class="mn-callout mn-callout--profile">
           <div class="mn-kv">
             <p class="mn-kv-row">
               <span class="mn-kv-key mn-text">ᠬᠡᠷᠡᠭᠯᠡᠭᠴᠢ</span>

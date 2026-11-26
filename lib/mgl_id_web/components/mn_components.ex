@@ -52,4 +52,24 @@ defmodule MglIdWeb.MnComponents do
     </div>
     """
   end
+
+  @doc """
+  Page title pillar: ornament + optional kicker + h1 + optional lede.
+  """
+  attr :title, :string, required: true
+  attr :kicker, :string, default: nil
+  slot :inner_block
+
+  def mn_page_head(assigns) do
+    ~H"""
+    <header class="mn-page-head">
+      <span class="mn-ornament" aria-hidden="true"></span>
+      <p :if={@kicker} class="mn-kicker">{@kicker}</p>
+      <h1 class="mn-h1 mn-text">{@title}</h1>
+      <div :if={@inner_block != []} class="mn-page-head__lede">
+        {render_slot(@inner_block)}
+      </div>
+    </header>
+    """
+  end
 end

@@ -32,7 +32,7 @@ defmodule MglIdWeb.Auth.ResetPasswordLive do
     ~H"""
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ</h1>
+        <.mn_page_head kicker="Mgl ID" title="ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠬᠦ" />
         <%= if @done do %>
           <p class="mn-p mn-text">
             ᠨᠢᠭᠤᠴᠠ ᠦᠭᠡ ᠰᠢᠨᠡᠴᠢᠯᠡᠭᠳᠡᠪᠡ᠃ <a href={~p"/login"}>ᠨᠡᠪᠲᠡᠷᠡᠬᠦ</a>

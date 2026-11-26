@@ -13,8 +13,11 @@ defmodule MglIdWeb.Auth.RegisterLive do
     ~H"""
     <.mn_shell title="Mgl ID" flash={@flash}>
       <article class="mn-doc">
-        <h1 class="mn-h1 mn-text">ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ</h1>
-        <p class="mn-lead mn-text">ᠮᠢᠨᠤ <span class="mn-sideways">Mgl ID</span> ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ</p>
+        <.mn_page_head kicker="Mgl ID" title="ᠪᠦᠷᠢᠳᠬᠡᠭᠦᠯᠬᠦ">
+          <p class="mn-lead mn-text">
+            ᠮᠢᠨᠤ <span class="mn-sideways">Mgl ID</span> ᠪᠦᠷᠲᠦᠭᠡᠯ ᠡᠭᠦᠰᠬᠡᠬᠦ
+          </p>
+        </.mn_page_head>
 
         <form action={~p"/register"} method="post" class="mn-form">
           <input type="hidden" name="_csrf_token" value={Plug.CSRFProtection.get_csrf_token()} />
