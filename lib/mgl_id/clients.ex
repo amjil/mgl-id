@@ -89,6 +89,7 @@ defmodule MglId.Clients do
       existing
       |> maybe_set_provider_metadata!(provider)
       |> maybe_sync_redirect_uris!(redirect_uris)
+      |> maybe_sync_authorized_scopes!()
     else
       scopes = Admin.get_scopes_by_names(["openid", "profile", "email", "offline_access"])
 
@@ -134,14 +135,16 @@ defmodule MglId.Clients do
       )
       |> String.split(",", trim: true)
 
+    # Must match Nomio.MglId redirect_uri / PUBLIC_BASE_URL (see nomio start-mgl.sh):
+    # http://100.64.0.6:4000/oauth/callback
     nomio_uris =
       System.get_env(
         "NOMIO_REDIRECT_URIS",
         Enum.join(
           [
-            "http://100.64.0.8:4003/oauth/callback",
-            "http://localhost:4003/oauth/callback",
-            "http://127.0.0.1:4003/oauth/callback"
+            "http://100.64.0.6:4000/oauth/callback",
+            "http://localhost:4000/oauth/callback",
+            "http://127.0.0.1:4000/oauth/callback"
           ],
           ","
         )
@@ -175,6 +178,21 @@ defmodule MglId.Clients do
       client
     else
       case Admin.update_client(client, %{redirect_uris: redirect_uris}) do
+        {:ok, updated} -> updated
+        {:error, _} -> client
+      end
+    end
+  end
+
+  defp maybe_sync_authorized_scopes!(client) do
+    scopes = Admin.get_scopes_by_names(["openid", "profile", "email", "offline_access"])
+    current_ids = client.authorized_scopes |> Enum.map(& &1.id) |> Enum.sort()
+    desired_ids = scopes |> Enum.map(& &1.id) |> Enum.sort()
+
+    if current_ids == desired_ids do
+      client
+    else
+      case Admin.update_client(client, %{authorized_scopes: Enum.map(scopes, &%{id: &1.id})}) do
         {:ok, updated} -> updated
         {:error, _} -> client
       end

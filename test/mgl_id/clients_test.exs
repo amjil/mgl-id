@@ -22,6 +22,8 @@ defmodule MglId.ClientsTest do
     assert xamt.metadata["provider"] == "xamt"
     assert nomio.metadata["provider"] == "nomio"
     assert xamt.pkce == true
+    assert "http://100.64.0.6:4000/oauth/callback" in nomio.redirect_uris
+    assert Enum.any?(nomio.authorized_scopes, &(&1.name == "openid"))
 
     again = Clients.seed_product_clients!()
     assert Enum.map(again, & &1.id) == [xamt.id, nomio.id]

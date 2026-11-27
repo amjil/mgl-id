@@ -223,7 +223,7 @@ defmodule MglId.AccountLinks do
       },
       "nomio" => %{
         name: "Nomio",
-        link_start_url: "http://100.64.0.8:4003/account/link",
+        link_start_url: "http://100.64.0.6:4000/account/link",
         oauth_client_name: "Nomio"
       }
     }

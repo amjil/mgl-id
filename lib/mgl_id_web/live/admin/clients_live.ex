@@ -14,6 +14,8 @@ defmodule MglIdWeb.Admin.ClientsLive do
       {:ok, push_navigate(socket, to: ~p"/account")}
     else
       _ = Clients.ensure_default_scopes!()
+      # Keep product clients (Xamt/Nomio) redirect_uris + Boruta cache in sync.
+      _ = Clients.seed_product_clients!()
 
       {:ok,
        socket
